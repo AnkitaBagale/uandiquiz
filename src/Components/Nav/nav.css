@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+
+.logo-title {
+	font-size: 2rem;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 500;
+	color: #ff3f6c;
+}
+.logo-and-symbol-style {
+	font-size: 1rem;
+	margin-right: 0.1875rem;
+	color: #3f4049;
+}
+.logo-tagline {
+	font-size: 0.625rem;
+	font-weight: 500;
+	letter-spacing: 1px;
+	color: #3f4049;
+}
+.hide-in-mobile {
+	display: none;
+}
+
+@media screen and (min-width: 768px) {
+	.hide-in-mobile {
+		display: block;
+	}
+}
