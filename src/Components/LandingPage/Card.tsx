@@ -1,4 +1,4 @@
-import { Box, Image, Tag, TagLabel } from '@chakra-ui/react';
+import { Box, Flex, Image, Tag, TagLabel } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { ButtonSolidPrimarySizeSmall } from '../Buttons';
 
@@ -7,6 +7,7 @@ export const Card = ({ quiz }: QuizCardProps) => {
 		<>
 			<Link to={`/quiz/${quiz._id}`}>
 				<Box
+					height={'100%'}
 					maxW='sm'
 					borderRadius='1.5rem'
 					overflow='hidden'
@@ -21,25 +22,38 @@ export const Card = ({ quiz }: QuizCardProps) => {
 					/>
 
 					<Box
+						height='calc(100% - 6rem)'
 						px='1rem'
 						py='1rem'
 						d='flex'
-						alignItems='center'
 						justifyContent='space-between'>
-						<Box>
+						<Flex
+							direction='column'
+							alignItems='space-between'
+							justifyContent='space-between'>
 							<Box
 								fontWeight='semibold'
 								as='h4'
 								lineHeight='tight'
 								alignItems='center'>
-								{quiz.type}
+								{quiz.name}
 							</Box>
+
 							<Box>
 								<Tag
 									size='sm'
 									colorScheme='green'
 									borderRadius='full'
 									px='1rem'
+									mt='0.25rem'>
+									<TagLabel>{quiz.type}</TagLabel>
+								</Tag>
+								<Tag
+									size='sm'
+									colorScheme='green'
+									borderRadius='full'
+									px='1rem'
+									ml='0.5rem'
 									mt='0.25rem'>
 									<TagLabel>{quiz.level}</TagLabel>
 								</Tag>
@@ -53,9 +67,10 @@ export const Card = ({ quiz }: QuizCardProps) => {
 									<TagLabel>Free</TagLabel>
 								</Tag>
 							</Box>
+						</Flex>
+						<Box alignSelf='center'>
+							<ButtonSolidPrimarySizeSmall btnText='Play now' />
 						</Box>
-
-						<ButtonSolidPrimarySizeSmall btnText='Play now' />
 					</Box>
 				</Box>
 			</Link>

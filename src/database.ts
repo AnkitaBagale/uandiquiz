@@ -16,6 +16,10 @@ export const colors = {
 		300: '#f5f5f6',
 		100: 'white',
 	},
+	violet: {
+		900: '#3F3947',
+		300: '#a7a7a7',
+	},
 };
 
 export const fonts = {
@@ -180,7 +184,7 @@ export const quiz1: Quiz = {
 export const quiz2: Quiz = {
 	_id: '122',
 	name: 'Elementary Art Test!',
-	totalQuestions: 2,
+	totalQuestions: 10,
 	score: 0,
 	questions: [
 		{
@@ -326,7 +330,7 @@ export const quiz2: Quiz = {
 export const quiz4: Quiz = {
 	_id: '122',
 	name: 'Elementary Art Test!',
-	totalQuestions: 2,
+	totalQuestions: 10,
 	score: 0,
 	questions: [
 		{

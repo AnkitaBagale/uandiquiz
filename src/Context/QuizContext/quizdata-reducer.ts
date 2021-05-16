@@ -1,4 +1,3 @@
-import { quiz1 } from '../../database';
 import { isSelectedOptionRight } from '../../utils';
 
 export const initialState: InitialStateType = {

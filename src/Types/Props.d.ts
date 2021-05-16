@@ -11,7 +11,7 @@ type QuizCardProps = { quiz: Quiz };
 
 interface NavItem {
 	label: string;
-	href?: string;
+	href: string;
 }
 
 type QuestionContainerProps = {

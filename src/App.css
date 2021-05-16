@@ -1,1 +1,12 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css';
 
+html {
+	scroll-behavior: smooth;
+}
+.App {
+	min-height: 100vh;
+}
+
+.link-no-style {
+	text-decoration: none;
+}

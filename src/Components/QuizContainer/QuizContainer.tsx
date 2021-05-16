@@ -10,7 +10,7 @@ import { QuestionContainer } from './QuestionContainer';
 
 export const QuizContainer = () => {
 	const {
-		state: { currentQuestionNumber, attempt },
+		state: { currentQuestionNumber },
 		dispatch,
 	} = useQuiz();
 

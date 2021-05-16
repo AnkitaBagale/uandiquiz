@@ -6,11 +6,11 @@ import {
 	Button,
 	Stack,
 	Collapse,
-	Link,
 	useDisclosure,
 	Avatar,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 import './nav.css';
 
@@ -29,7 +29,7 @@ export const Nav = () => {
 	const { isOpen, onToggle } = useDisclosure();
 
 	return (
-		<Box>
+		<Box position='sticky' top='0' zIndex={1}>
 			<Flex
 				bg='white'
 				color='gray.800'
@@ -50,7 +50,7 @@ export const Nav = () => {
 							onClick={onToggle}
 							icon={
 								isOpen ? (
-									<CloseIcon w={3} h={3} />
+									<CloseIcon w={4} h={4} />
 								) : (
 									<HamburgerIcon w={6} h={6} />
 								)
@@ -60,18 +60,18 @@ export const Nav = () => {
 						/>
 					</Flex>
 					<Flex justify={{ base: 'center', md: 'start' }}>
-						<Box>
-							<div className='primary-text-color logo-title'>
+						<Link to='/' className='link-no-style'>
+							<span className='primary-text-color logo-title'>
 								U
 								<span className='tertiary-text-color logo-and-symbol-style'>
 									&
 								</span>
 								I
-							</div>
-							<div className='tertiary-text-color logo-tagline hide-in-mobile'>
+							</span>
+							<span className='tertiary-text-color logo-tagline hide-in-mobile'>
 								LET'S DESIGN TOGETHER
-							</div>
-						</Box>
+							</span>
+						</Link>
 
 						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
 							<DesktopNav />
@@ -108,10 +108,9 @@ const DesktopNav = () => {
 		<Flex alignItems='center' spacing={4}>
 			{NAV_ITEMS.map(
 				(navItem: NavItem): JSX.Element => (
-					<Box key={navItem.label}>
-						<Link
+					<Link to={navItem.href} key={navItem.label}>
+						<Button
 							p={2}
-							href={navItem.href ?? '#'}
 							fontSize={'1rem'}
 							fontWeight={400}
 							color='gray.800'
@@ -120,8 +119,8 @@ const DesktopNav = () => {
 								color: 'pink.800',
 							}}>
 							{navItem.label}
-						</Link>
-					</Box>
+						</Button>
+					</Link>
 				),
 			)}
 		</Flex>
@@ -130,10 +129,12 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
 	return (
-		<Stack bg='white' p={4} display={{ md: 'none' }} boxShadow='md'>
+		<Stack bg='white' px={6} py={4} display={{ md: 'none' }} boxShadow='md'>
 			{NAV_ITEMS.map(
 				(navItem: NavItem): JSX.Element => (
-					<MobileNavItem key={navItem.label} {...navItem} />
+					<Link to={navItem.href}>
+						<MobileNavItem key={navItem.label} {...navItem} />
+					</Link>
 				),
 			)}
 		</Stack>
@@ -145,8 +146,6 @@ const MobileNavItem = ({ label, href }: NavItem) => {
 		<Stack spacing={4}>
 			<Flex
 				py={2}
-				as={Link}
-				href={href ?? '#'}
 				justify={'space-between'}
 				align={'center'}
 				_hover={{
