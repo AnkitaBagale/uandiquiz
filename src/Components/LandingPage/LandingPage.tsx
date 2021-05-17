@@ -31,7 +31,7 @@ export const LandingPage = () => {
 						fontSize='x-large'
 						cursor='pointer'
 						p='1rem'>
-						<Image width='100%' src={image} alt='a kitten' />
+						<Image width='100%' src={image} alt='quiz' />
 						<Heading fontSize='1.2rem' fontWeight='500'>
 							{type}
 						</Heading>
