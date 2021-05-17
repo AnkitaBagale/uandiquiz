@@ -8,8 +8,6 @@ import { VideoCard } from './VideoCard';
 export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 	const [videos, setVideos] = useState<Video[] | null>(null);
 
-	console.log({ type });
-
 	const gridProps = {
 		columns: [1, 2, 3],
 		gap: '1.5rem',
@@ -23,7 +21,7 @@ export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 				const {
 					data: { response },
 				} = await axios.get(url);
-				console.log(response);
+
 				setVideos(response);
 			} catch (error) {
 				console.log(error);

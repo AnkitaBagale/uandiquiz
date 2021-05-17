@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Tag, TagLabel } from '@chakra-ui/react';
+import { Box, Image, Tag, TagLabel } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { ButtonSolidPrimarySizeSmall } from '../Buttons';
 

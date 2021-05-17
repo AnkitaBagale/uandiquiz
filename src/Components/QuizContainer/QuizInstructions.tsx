@@ -7,7 +7,6 @@ import {
 	List,
 	ListIcon,
 	ListItem,
-	Text,
 } from '@chakra-ui/layout';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../Buttons';
 
