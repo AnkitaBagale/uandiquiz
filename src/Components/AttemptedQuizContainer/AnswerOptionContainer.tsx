@@ -1,7 +1,8 @@
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { Box, SimpleGrid } from '@chakra-ui/react';
+import { Option, Question } from '../../database/Quiz.type';
 
-function OptionCard({ option }: OptionCardProps) {
+function OptionCard({ option }: { option: Option }) {
 	const bgColor = option.isRight
 		? 'green.300'
 		: option.isSelected
@@ -26,7 +27,7 @@ function OptionCard({ option }: OptionCardProps) {
 	);
 }
 
-export const AnswerOptionContainer = ({ question }: OptionContainerProps) => {
+export const AnswerOptionContainer = ({ question }: { question: Question }) => {
 	const options = question.options;
 
 	return (

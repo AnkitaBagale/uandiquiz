@@ -1,5 +1,6 @@
 import { Box, SimpleGrid, useRadio, useRadioGroup } from '@chakra-ui/react';
 import { useQuiz } from '../../Context';
+import { Option, Question } from '../../database/Quiz.type';
 
 function RadioCard(props: any) {
 	const { getInputProps, getCheckboxProps } = useRadio(props.radio);
@@ -39,7 +40,7 @@ function RadioCard(props: any) {
 	);
 }
 
-export const OptionContainer = ({ question }: OptionContainerProps) => {
+export const OptionContainer = ({ question }: { question: Question }) => {
 	const options = question.options;
 
 	const { dispatch } = useQuiz();

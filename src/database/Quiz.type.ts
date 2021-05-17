@@ -1,4 +1,4 @@
-type Option = {
+export type Option = {
 	_id: string;
 	text: string;
 	/**
@@ -8,7 +8,7 @@ type Option = {
 	isSelected?: boolean;
 };
 
-type Question = {
+export type Question = {
 	_id: string;
 	question: string;
 	image: string;
@@ -17,13 +17,13 @@ type Question = {
 	options: Option[];
 };
 
-type UserScore = {
+export type UserScore = {
 	_id: string;
 	userId: string;
 	score: number;
 };
 
-type Quiz = {
+export type Quiz = {
 	_id: string;
 	userid?: string;
 	score: number;
@@ -36,7 +36,7 @@ type Quiz = {
 	highScore: UserScore[];
 };
 
-type TypesOfQuiz = {
+export type TypesOfQuiz = {
 	image: string;
 	type: string;
 	noOfQuiz: number;

@@ -1,7 +1,7 @@
 import { isSelectedOptionRight } from '../../utils';
-
+import { InitialStateType, ActionType } from './QuizContext.type';
 export const initialState: InitialStateType = {
-	attempt: null,
+	attemptedQuiz: null,
 	currentQuestionNumber: 1,
 };
 
@@ -13,8 +13,8 @@ export const quizReducer = (
 		case 'SET_ATTEMPT': {
 			return {
 				...state,
-				attempt: {
-					...action.payload,
+				attemptedQuiz: {
+					...action.payload.quiz,
 					score: 0,
 				},
 			};
@@ -28,8 +28,8 @@ export const quizReducer = (
 		}
 
 		case 'CALCULATE_SCORE': {
-			if (state.attempt) {
-				const score = state.attempt.questions.reduce(
+			if (state.attemptedQuiz) {
+				const score = state.attemptedQuiz.questions.reduce(
 					(totalScore: number, { negativePoints, points, options }): number => {
 						if (isSelectedOptionRight(options)) {
 							return totalScore + points;
@@ -41,8 +41,8 @@ export const quizReducer = (
 
 				return {
 					...state,
-					attempt: {
-						...state.attempt,
+					attemptedQuiz: {
+						...state.attemptedQuiz,
 						score,
 					},
 				};
@@ -52,26 +52,28 @@ export const quizReducer = (
 		}
 
 		case 'SELECT_OPTION': {
-			if (state.attempt) {
-				const updatedQuestions = state.attempt.questions.map((question) => {
-					if (question._id !== action.payload.questionId) {
-						return question;
-					} else {
-						return {
-							...question,
-							options: question.options.map((option) =>
-								option._id !== action.payload.optionId
-									? { ...option, isSelected: false }
-									: { ...option, isSelected: true },
-							),
-						};
-					}
-				});
+			if (state.attemptedQuiz) {
+				const updatedQuestions = state.attemptedQuiz.questions.map(
+					(question) => {
+						if (question._id !== action.payload.questionId) {
+							return question;
+						} else {
+							return {
+								...question,
+								options: question.options.map((option) =>
+									option._id !== action.payload.optionId
+										? { ...option, isSelected: false }
+										: { ...option, isSelected: true },
+								),
+							};
+						}
+					},
+				);
 
 				return {
 					...state,
-					attempt: {
-						...state.attempt,
+					attemptedQuiz: {
+						...state.attemptedQuiz,
 						questions: updatedQuestions,
 					},
 				};

@@ -9,6 +9,7 @@ import {
 	ListItem,
 } from '@chakra-ui/layout';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../Buttons';
+import { QuizInstructionsProps } from './QuizInstructionsProps.type';
 
 export const QuizInstructions = ({
 	quiz,

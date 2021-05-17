@@ -3,9 +3,10 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../Buttons';
+import { Video } from './Video.type';
 import { VideoCard } from './VideoCard';
 
-export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
+export const RecommendedSection = ({ type }: { type: string }) => {
 	const [videos, setVideos] = useState<Video[] | null>(null);
 
 	const gridProps = {

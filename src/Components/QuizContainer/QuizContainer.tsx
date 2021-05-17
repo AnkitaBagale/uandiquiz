@@ -4,7 +4,8 @@ import { useParams } from 'react-router';
 
 import { useQuiz } from '../../Context';
 import { quizes } from '../../database';
-import { AttemptContainer } from '../AttemptContainer';
+import { Quiz } from '../../database/Quiz.type';
+import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 
 import { QuestionContainer } from './QuestionContainer';
 import { QuizInstructions } from './QuizInstructions';
@@ -15,19 +16,18 @@ export const QuizContainer = () => {
 		dispatch,
 	} = useQuiz();
 
-	const [quiz, setQuiz] = useState<Quiz | null | undefined>(null);
+	const [quiz, setQuiz] = useState<Quiz | null>(null);
 
 	const { quizId } = useParams();
-
 	const [showResult, setShowResult] = useState(false);
 	const [showQuiz, setShowQuiz] = useState(false);
 
 	useEffect(() => {
 		const quizDetails = quizes.find((quiz) => quiz._id === quizId);
 		if (quizDetails) {
-			dispatch({ type: 'SET_ATTEMPT', payload: quizDetails });
+			dispatch({ type: 'SET_ATTEMPT', payload: { quiz: quizDetails } });
+			setQuiz(quizDetails);
 		}
-		setQuiz(quizDetails);
 
 		return () => {
 			dispatch({ type: 'RESET' });
@@ -37,7 +37,7 @@ export const QuizContainer = () => {
 	return (
 		<>
 			{quiz === null && 'loading...'}
-			{quiz === undefined && 'quiz not found'}
+
 			{!showResult && quiz && (
 				<>
 					{!showQuiz ? (
@@ -63,7 +63,7 @@ export const QuizContainer = () => {
 					)}
 				</>
 			)}
-			{showResult && <AttemptContainer />}
+			{showResult && <AttemptedQuizContainer />}
 		</>
 	);
 };

@@ -4,13 +4,14 @@ import { OptionContainer } from './OptionContainer';
 
 import { btnStyleProps, nextButtonStyleProps } from '../Buttons';
 import { useQuiz } from '../../Context';
+import { QuestionContainerProps } from './QuestionContainerProps.type';
 
 export const QuestionContainer = ({
 	question,
 	setShowResult,
 }: QuestionContainerProps) => {
 	const {
-		state: { currentQuestionNumber, attempt },
+		state: { currentQuestionNumber, attemptedQuiz },
 		dispatch,
 	} = useQuiz();
 
@@ -38,14 +39,14 @@ export const QuestionContainer = ({
 					{...btnStyleProps}
 					{...nextButtonStyleProps}
 					onClick={() => {
-						if (currentQuestionNumber !== attempt!.totalQuestions) {
+						if (currentQuestionNumber !== attemptedQuiz!.totalQuestions) {
 							dispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 						} else {
 							dispatch({ type: 'CALCULATE_SCORE' });
 							setShowResult(true);
 						}
 					}}>
-					{currentQuestionNumber !== attempt!.totalQuestions
+					{currentQuestionNumber !== attemptedQuiz!.totalQuestions
 						? 'Next'
 						: 'submit'}
 				</Button>

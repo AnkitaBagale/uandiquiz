@@ -1,4 +1,5 @@
 import quiz_default from './assets/quiz-default2.png';
+import { Quiz } from './Quiz.type';
 
 export const quiz2: Quiz = {
 	_id: '123',
@@ -132,6 +133,5 @@ export const quiz2: Quiz = {
 		{ _id: '1', userId: '123', score: 25 },
 		{ _id: '2', userId: '124', score: 23 },
 	],
-	image:
-		'https://i.postimg.cc/BZy0XzL6/bench-accounting-un-G80-SBSf-MU-unsplash.jpg',
+	image: quiz_default,
 };

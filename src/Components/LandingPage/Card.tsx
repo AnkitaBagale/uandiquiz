@@ -1,8 +1,9 @@
 import { Box, Image, Tag, TagLabel } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { Quiz } from '../../database/Quiz.type';
 import { ButtonSolidPrimarySizeSmall } from '../Buttons';
 
-export const Card = ({ quiz }: QuizCardProps) => {
+export const Card = ({ quiz }: { quiz: Quiz }) => {
 	return (
 		<>
 			<Link to={`/quiz/${quiz._id}`}>

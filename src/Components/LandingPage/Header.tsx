@@ -37,7 +37,7 @@ export const Header = () => {
 						mt='1rem'
 						{...btnStyleProps}
 						{...solidPrimaryButtonStyleProps}>
-						Explore Quizes
+						Explore Quizzes
 					</Button>
 				</Box>
 				<Box>

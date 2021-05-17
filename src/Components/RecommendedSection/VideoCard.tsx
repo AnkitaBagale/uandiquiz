@@ -3,8 +3,9 @@ import {
 	btnStyleProps,
 	solidPrimaryButtonStyleProps,
 } from '../Buttons/Buttons';
+import { Video } from './Video.type';
 
-export const VideoCard = ({ video }: VideoCardProps) => {
+export const VideoCard = ({ video }: { video: Video }) => {
 	return (
 		<>
 			<Box

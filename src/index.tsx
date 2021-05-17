@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { QuizDataProvider } from './Context';
 import { colors, fonts } from './database';
+import ScrollToTop from './ScrollToTop';
 
 const theme = extendTheme({
 	colors,
@@ -19,6 +20,7 @@ ReactDOM.render(
 		<ChakraProvider theme={theme}>
 			<QuizDataProvider>
 				<Router>
+					<ScrollToTop />
 					<App />
 				</Router>
 			</QuizDataProvider>

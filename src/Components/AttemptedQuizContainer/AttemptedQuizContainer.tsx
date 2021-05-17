@@ -1,16 +1,17 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useQuiz } from '../../Context';
+import { Question } from '../../database/Quiz.type';
 import { RecommendedSection } from '../RecommendedSection';
 import { AnswerContainer } from './AnswerContainer';
 
-export const AttemptContainer = () => {
+export const AttemptedQuizContainer = () => {
 	const {
-		state: { attempt },
+		state: { attemptedQuiz },
 	} = useQuiz();
 
 	return (
 		<>
-			{attempt && (
+			{attemptedQuiz && (
 				<>
 					<Heading
 						fontWeight='500'
@@ -28,7 +29,7 @@ export const AttemptContainer = () => {
 						mt='1rem'
 						px='1.5rem'
 						textAlign='center'>
-						{attempt.score >= 70
+						{attemptedQuiz.score >= 70
 							? '🎉 Congratulations! You won!'
 							: '🙃 Oops! Better luck next time'}
 					</Text>
@@ -50,8 +51,8 @@ export const AttemptContainer = () => {
 						textAlign='center'>
 						<Box
 							as='span'
-							color={attempt.score >= 70 ? 'green.400' : 'red.400'}>
-							{attempt.score}
+							color={attemptedQuiz.score >= 70 ? 'green.400' : 'red.400'}>
+							{attemptedQuiz.score}
 						</Box>
 						/100
 					</Text>
@@ -70,7 +71,7 @@ export const AttemptContainer = () => {
 						px='1.5rem'
 						textAlign='center'
 						mt='2rem'>
-						{attempt.questions.map(
+						{attemptedQuiz.questions.map(
 							(question: Question, index: number): JSX.Element => (
 								<AnswerContainer
 									key={question._id}
@@ -80,7 +81,7 @@ export const AttemptContainer = () => {
 							),
 						)}
 					</SimpleGrid>
-					<RecommendedSection type={attempt.type} />
+					<RecommendedSection type={attemptedQuiz.type} />
 				</>
 			)}
 		</>

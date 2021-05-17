@@ -2,6 +2,7 @@ import { Card } from './Card';
 import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
 import { quizes, typesOfQuiz } from '../../database';
 import { Header } from './Header';
+import { Quiz } from '../../database/Quiz.type';
 
 const gridProps = {
 	columns: [1, 2, 3],

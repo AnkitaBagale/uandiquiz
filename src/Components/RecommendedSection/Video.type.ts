@@ -1,4 +1,4 @@
-type Video = {
+export type Video = {
 	language: string;
 	level: string;
 	name: string;

@@ -1,17 +1,19 @@
-type InitialStateType = {
-	attempt: Quiz | null;
+import { Quiz } from '../../database/Quiz.type';
+
+export type InitialStateType = {
+	attemptedQuiz: Quiz | null;
 	currentQuestionNumber: number;
 };
 
-type ContextType = {
+export type ContextType = {
 	state: InitialStateType;
 	dispatch: (action: ActionType) => void;
 };
 
-type ActionType =
+export type ActionType =
 	| {
 			type: 'SET_ATTEMPT';
-			payload: Quiz;
+			payload: { quiz: Quiz };
 	  }
 	| {
 			type: 'INCREMENT_QUESTION_NUMBER';

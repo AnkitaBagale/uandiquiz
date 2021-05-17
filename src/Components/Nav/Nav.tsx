@@ -13,6 +13,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
 import './nav.css';
+import { NavItem } from './NavItem.type';
 
 const NAV_ITEMS: Array<NavItem> = [
 	{

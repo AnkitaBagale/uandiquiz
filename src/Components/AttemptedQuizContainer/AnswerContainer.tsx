@@ -1,6 +1,7 @@
 import { Box, Image, Heading, Text } from '@chakra-ui/react';
 import { isSelectedOptionRight } from '../../utils';
 import { AnswerOptionContainer } from './AnswerOptionContainer';
+import { AnswerContainerProps } from './AnswerContainerProps.type';
 
 export const AnswerContainer = ({
 	question,

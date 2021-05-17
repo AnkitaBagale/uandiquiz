@@ -8,6 +8,8 @@ import quiz1_7 from './assets/Quiz1/quiz1-7.jpg';
 import quiz1_8 from './assets/Quiz1/quiz1-8.jpg';
 import quiz1_9 from './assets/Quiz1/quiz1-9.jpg';
 import quiz1_10 from './assets/Quiz1/quiz1-10.jpg';
+import quiz_default from './assets/quiz-default2.png';
+import { Quiz } from './Quiz.type';
 
 export const quiz1: Quiz = {
 	_id: '124',
@@ -149,6 +151,5 @@ export const quiz1: Quiz = {
 		{ _id: '1', userId: '123', score: 25 },
 		{ _id: '2', userId: '124', score: 23 },
 	],
-	image:
-		'https://i.postimg.cc/BZy0XzL6/bench-accounting-un-G80-SBSf-MU-unsplash.jpg',
+	image: quiz_default,
 };

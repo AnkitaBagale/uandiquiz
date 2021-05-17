@@ -1,6 +1,7 @@
 import img1 from './assets/img1.png';
 import img2 from './assets/img2.png';
 import img3 from './assets/img3.png';
+import { Quiz, TypesOfQuiz } from './Quiz.type';
 
 import { quiz1 } from './quiz1';
 import { quiz2 } from './quiz2';
