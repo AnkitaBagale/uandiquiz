@@ -12,7 +12,8 @@ export const Card = ({ quiz }: QuizCardProps) => {
 					borderRadius='1.5rem'
 					overflow='hidden'
 					mx='auto'
-					boxShadow='md'>
+					boxShadow='md'
+					textAlign='center'>
 					<Image
 						src={quiz.image}
 						alt={quiz.name}
@@ -26,49 +27,44 @@ export const Card = ({ quiz }: QuizCardProps) => {
 						px='1rem'
 						py='1rem'
 						d='flex'
-						justifyContent='space-between'>
-						<Flex
-							direction='column'
-							alignItems='space-between'
-							justifyContent='space-between'>
-							<Box
-								fontWeight='semibold'
-								as='h4'
-								lineHeight='tight'
-								alignItems='center'>
-								{quiz.name}
-							</Box>
+						flexDirection='column'>
+						<Box
+							fontWeight='semibold'
+							as='h4'
+							lineHeight='tight'
+							alignItems='center'>
+							{quiz.name}
+						</Box>
 
-							<Box>
-								<Tag
-									size='sm'
-									colorScheme='green'
-									borderRadius='full'
-									px='1rem'
-									mt='0.25rem'>
-									<TagLabel>{quiz.type}</TagLabel>
-								</Tag>
-								<Tag
-									size='sm'
-									colorScheme='green'
-									borderRadius='full'
-									px='1rem'
-									ml='0.5rem'
-									mt='0.25rem'>
-									<TagLabel>{quiz.level}</TagLabel>
-								</Tag>
-								<Tag
-									size='sm'
-									colorScheme='green'
-									borderRadius='full'
-									px='1rem'
-									mt='0.25rem'
-									ml='0.5rem'>
-									<TagLabel>Free</TagLabel>
-								</Tag>
-							</Box>
-						</Flex>
-						<Box alignSelf='center'>
+						<Box d='flex' flexWrap='wrap' justifyContent='center'>
+							<Tag
+								size='sm'
+								colorScheme='green'
+								borderRadius='full'
+								px='1rem'
+								mt='0.25rem'>
+								<TagLabel>{quiz.type}</TagLabel>
+							</Tag>
+							<Tag
+								size='sm'
+								colorScheme='green'
+								borderRadius='full'
+								px='1rem'
+								ml='0.5rem'
+								mt='0.25rem'>
+								<TagLabel>{quiz.level}</TagLabel>
+							</Tag>
+							<Tag
+								size='sm'
+								colorScheme='green'
+								borderRadius='full'
+								px='1rem'
+								mt='0.25rem'
+								ml='0.5rem'>
+								<TagLabel>Free</TagLabel>
+							</Tag>
+						</Box>
+						<Box mt='1rem'>
 							<ButtonSolidPrimarySizeSmall btnText='Play now' />
 						</Box>
 					</Box>

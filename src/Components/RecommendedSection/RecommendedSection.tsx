@@ -8,6 +8,8 @@ import { VideoCard } from './VideoCard';
 export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 	const [videos, setVideos] = useState<Video[] | null>(null);
 
+	console.log({ type });
+
 	const gridProps = {
 		columns: [1, 2, 3],
 		gap: '1.5rem',
@@ -17,11 +19,11 @@ export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const url = 'https://uandistoreapi.herokuapp.com/videos/type/Painting';
+				const url = `https://uandistoreapi.herokuapp.com/videos/type/${type}`;
 				const {
 					data: { response },
 				} = await axios.get(url);
-
+				console.log(response);
 				setVideos(response);
 			} catch (error) {
 				console.log(error);
@@ -33,16 +35,16 @@ export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 			{videos && videos.length !== 0 && (
 				<Box textAlign='center' mt='5rem' mb='5rem'>
 					<Heading
-						fontSize='xx-large'
-						fontWeight='500'
+						fontSize={{ md: 'xx-large', base: 'x-large' }}
+						fontWeight='400'
 						textAlign='center'
 						mb='2rem'>
-						Check out U&I videos to learn {type}
+						Improve yourself by watching {type} videos
 					</Heading>
 					<SimpleGrid {...gridProps} mb='2rem'>
 						{videos.map(
 							(video: Video): JSX.Element => (
-								<VideoCard video={video}></VideoCard>
+								<VideoCard video={video} key={video._id}></VideoCard>
 							),
 						)}
 					</SimpleGrid>

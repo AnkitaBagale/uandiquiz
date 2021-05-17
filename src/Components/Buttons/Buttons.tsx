@@ -14,18 +14,6 @@ export const btnStyleProps = {
 
 export const solidPrimaryButtonStyleProps = {
 	color: 'gray.100',
-	bg: 'pink.800',
-	_hover: { bg: 'pink.900' },
-	_active: {
-		bg: 'pink.900',
-		transform: 'scale(0.98)',
-		borderColor: 'pink.900',
-	},
-};
-
-export const nextButtonStyleProps = {
-	mt: '1.5rem',
-	color: 'gray.100',
 	bg: 'pink.700',
 	_hover: { bg: 'pink.800' },
 	_active: {
@@ -35,17 +23,29 @@ export const nextButtonStyleProps = {
 	},
 };
 
+export const nextButtonStyleProps = {
+	mt: '1.5rem',
+	color: 'gray.100',
+	bg: 'pink.700',
+	_hover: { bg: 'pink.800' },
+	_active: {
+		bg: 'pink.700',
+		transform: 'scale(0.98)',
+		borderColor: 'pink.700',
+	},
+};
+
 // const outlinePrimaryButtonStyleProps = {
-// 	color: 'pink.800',
+// 	color: 'pink.700',
 // 	bg: 'gray.100',
 // 	border: '1px',
-// 	borderColor: 'pink.800',
+// 	borderColor: 'pink.700',
 // 	variant: 'outline',
-// 	_hover: { bg: 'pink.900', color: 'gray.100' },
+// 	_hover: { bg: 'pink.800', color: 'gray.100' },
 // 	_active: {
-// 		bg: 'pink.900',
+// 		bg: 'pink.800',
 // 		transform: 'scale(0.98)',
-// 		borderColor: 'pink.900',
+// 		borderColor: 'pink.800',
 // 		color: 'gray.100',
 // 	},
 // };

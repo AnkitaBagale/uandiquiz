@@ -1,6 +1,6 @@
 import { Card } from './Card';
-import { Heading, SimpleGrid } from '@chakra-ui/react';
-import { quizes } from '../../database';
+import { Box, Flex, Heading, Image, SimpleGrid, Text } from '@chakra-ui/react';
+import { quizes, typesOfQuiz } from '../../database';
 import { Header } from './Header';
 
 const gridProps = {
@@ -13,7 +13,36 @@ export const LandingPage = () => {
 	return (
 		<>
 			<Header />
-			<Heading py='2rem' px='1.5rem' textAlign='center' id='explore'>
+
+			<Heading pt='0rem' pb='3rem' px='1.5rem' textAlign='center' id='explore'>
+				Categories
+			</Heading>
+
+			<Flex mb='5rem' justifyContent='center'>
+				{typesOfQuiz.map(({ type, image, noOfQuiz, cardColor }) => (
+					<Box
+						key={type}
+						borderRadius='1.5rem'
+						maxW='14rem'
+						width='100%'
+						mx='2rem'
+						bg={cardColor}
+						textAlign='center'
+						fontSize='x-large'
+						cursor='pointer'
+						p='1rem'>
+						<Image width='100%' src={image} alt='a kitten' />
+						<Heading fontSize='1.2rem' fontWeight='500'>
+							{type}
+						</Heading>
+						<Text fontSize='1rem'>
+							{noOfQuiz ? `${noOfQuiz} Quiz` : 'Coming soon..'}
+						</Text>
+					</Box>
+				))}
+			</Flex>
+
+			<Heading pt='2rem' pb='3rem' px='1.5rem' textAlign='center' id='explore'>
 				Featured Quizes
 			</Heading>
 			<SimpleGrid {...gridProps} mb='5rem'>

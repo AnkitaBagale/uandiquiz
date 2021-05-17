@@ -132,8 +132,8 @@ const MobileNav = () => {
 		<Stack bg='white' px={6} py={4} display={{ md: 'none' }} boxShadow='md'>
 			{NAV_ITEMS.map(
 				(navItem: NavItem): JSX.Element => (
-					<Link to={navItem.href}>
-						<MobileNavItem key={navItem.label} {...navItem} />
+					<Link to={navItem.href} key={navItem.label}>
+						<MobileNavItem {...navItem} />
 					</Link>
 				),
 			)}

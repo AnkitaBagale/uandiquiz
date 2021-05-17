@@ -15,7 +15,6 @@ export const AnswerContainer = ({
 				width='100%'
 				objectFit='cover'
 				borderRadius='1.5rem'
-				shadow='base'
 			/>
 			<Box py='1rem'>
 				<Heading as='h4' size='sm'>

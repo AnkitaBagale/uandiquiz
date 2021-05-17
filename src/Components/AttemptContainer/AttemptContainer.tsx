@@ -12,53 +12,49 @@ export const AttemptContainer = () => {
 		<>
 			{attempt && (
 				<>
-					{attempt.score > 0 && (
-						<>
-							<Heading
-								fontWeight='500'
-								as='h1'
-								fontSize='x-large'
-								mt='2rem'
-								px='1.5rem'
-								textAlign='center'>
-								Quiz Result
-							</Heading>
+					<Heading
+						fontWeight='500'
+						as='h1'
+						fontSize='x-large'
+						mt='2rem'
+						px='1.5rem'
+						textAlign='center'>
+						Quiz Result
+					</Heading>
 
-							<Text
-								fontSize='xx-large'
-								fontWeight='500'
-								mt='1rem'
-								px='1.5rem'
-								textAlign='center'>
-								{attempt.score > 70
-									? '🎉 Congratulations! You won!'
-									: '🙃 Oops! Better luck next time'}
-							</Text>
+					<Text
+						fontSize='xx-large'
+						fontWeight='500'
+						mt='1rem'
+						px='1.5rem'
+						textAlign='center'>
+						{attempt.score >= 70
+							? '🎉 Congratulations! You won!'
+							: '🙃 Oops! Better luck next time'}
+					</Text>
 
-							<Text
-								fontSize='lg'
-								fontWeight='500'
-								mt='1rem'
-								px='1.5rem'
-								textAlign='center'>
-								Your Score
-							</Text>
+					<Text
+						fontSize='lg'
+						fontWeight='500'
+						mt='1rem'
+						px='1.5rem'
+						textAlign='center'>
+						Your Score
+					</Text>
 
-							<Text
-								fontSize='x-large'
-								fontWeight='500'
-								mt='0.25rem'
-								px='1.5rem'
-								textAlign='center'>
-								<Box
-									as='span'
-									color={attempt.score > 70 ? 'green.400' : 'red.400'}>
-									{attempt.score}
-								</Box>
-								/100
-							</Text>
-						</>
-					)}
+					<Text
+						fontSize='x-large'
+						fontWeight='500'
+						mt='0.25rem'
+						px='1.5rem'
+						textAlign='center'>
+						<Box
+							as='span'
+							color={attempt.score >= 70 ? 'green.400' : 'red.400'}>
+							{attempt.score}
+						</Box>
+						/100
+					</Text>
 
 					<Heading
 						fontSize='xx-large'

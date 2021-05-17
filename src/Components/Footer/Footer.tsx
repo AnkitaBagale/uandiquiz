@@ -38,6 +38,7 @@ export const Footer = () => {
 					{faviconClassNames.map(
 						({ className, link }: SocialShareIcon): JSX.Element => (
 							<IconButton
+								key={className}
 								as='a'
 								href={link}
 								target='_blank'

@@ -19,6 +19,11 @@ type QuestionContainerProps = {
 	setShowResult: (flag: boolean) => void;
 };
 
+type QuizInstructionsProps = {
+	quiz: Quiz;
+	setShowQuiz: (flag: boolean) => void;
+};
+
 type RecommendedSectionProps = { type: string };
 
 type VideoCardProps = { video: Video };

@@ -35,3 +35,10 @@ type Quiz = {
 	level: string;
 	highScore: UserScore[];
 };
+
+type TypesOfQuiz = {
+	image: string;
+	type: string;
+	noOfQuiz: number;
+	cardColor: string;
+};

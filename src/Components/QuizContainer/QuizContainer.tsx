@@ -7,6 +7,7 @@ import { quizes } from '../../database';
 import { AttemptContainer } from '../AttemptContainer';
 
 import { QuestionContainer } from './QuestionContainer';
+import { QuizInstructions } from './QuizInstructions';
 
 export const QuizContainer = () => {
 	const {
@@ -19,6 +20,7 @@ export const QuizContainer = () => {
 	const { quizId } = useParams();
 
 	const [showResult, setShowResult] = useState(false);
+	const [showQuiz, setShowQuiz] = useState(false);
 
 	useEffect(() => {
 		const quizDetails = quizes.find((quiz) => quiz._id === quizId);
@@ -32,28 +34,33 @@ export const QuizContainer = () => {
 		};
 	}, []);
 
-	console.log({ quiz });
 	return (
 		<>
 			{quiz === null && 'loading...'}
 			{quiz === undefined && 'quiz not found'}
 			{!showResult && quiz && (
 				<>
-					<Heading mt='2rem' px='1.5rem' textAlign='center'>
-						{quiz.name}
-					</Heading>
-					<SimpleGrid
-						columns={[1, 2, 2]}
-						gap={'1.5rem'}
-						px='1.5rem'
-						textAlign='center'
-						mt='2rem'>
-						<QuestionContainer
-							key={quiz.questions[currentQuestionNumber - 1]._id}
-							question={quiz.questions[currentQuestionNumber - 1]}
-							setShowResult={setShowResult}
-						/>
-					</SimpleGrid>
+					{!showQuiz ? (
+						<QuizInstructions quiz={quiz} setShowQuiz={setShowQuiz} />
+					) : (
+						<>
+							<Heading mt='2rem' px='1.5rem' textAlign='center'>
+								{quiz.name}
+							</Heading>
+							<SimpleGrid
+								columns={[1, 2, 2]}
+								gap={'1.5rem'}
+								px='1.5rem'
+								textAlign='center'
+								my='2rem'>
+								<QuestionContainer
+									key={quiz.questions[currentQuestionNumber - 1]._id}
+									question={quiz.questions[currentQuestionNumber - 1]}
+									setShowResult={setShowResult}
+								/>
+							</SimpleGrid>
+						</>
+					)}
 				</>
 			)}
 			{showResult && <AttemptContainer />}
