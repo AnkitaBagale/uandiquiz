@@ -27,7 +27,7 @@ export const RecommendedSection = ({ type }: RecommendedSectionProps) => {
 				console.log(error);
 			}
 		})();
-	}, []);
+	}, [type]);
 	return (
 		<>
 			{videos && videos.length !== 0 && (

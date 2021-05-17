@@ -32,7 +32,7 @@ export const QuizContainer = () => {
 		return () => {
 			dispatch({ type: 'RESET' });
 		};
-	}, []);
+	}, [dispatch, quizId]);
 
 	return (
 		<>
