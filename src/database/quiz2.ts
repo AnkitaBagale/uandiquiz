@@ -1,4 +1,9 @@
 import quiz_default from './assets/quiz-default2.png';
+import quiz2_1 from './assets/Quiz2/quiz2-1.jpg';
+import quiz2_2 from './assets/Quiz2/quiz2-2.jpg';
+import quiz2_3 from './assets/Quiz2/quiz2-3.jpg';
+import quiz2_4 from './assets/Quiz2/quiz2-4.jpg';
+import quiz2_5 from './assets/Quiz2/quiz2-5.jpg';
 import { Quiz } from './Quiz.type';
 
 export const quiz2: Quiz = {
@@ -10,7 +15,7 @@ export const quiz2: Quiz = {
 		{
 			_id: '1',
 			question: 'Mixing which two colors produces purple?',
-			image: quiz_default,
+			image: quiz2_1,
 			points: 10,
 			options: [
 				{ _id: '1', text: 'Green and brown', isRight: false },
@@ -22,7 +27,7 @@ export const quiz2: Quiz = {
 		{
 			_id: '2',
 			question: 'Mixing blue and yellow produces which color?',
-			image: quiz_default,
+			image: quiz2_2,
 			points: 10,
 			options: [
 				{ _id: '1', text: 'Green', isRight: true },
@@ -33,7 +38,7 @@ export const quiz2: Quiz = {
 		{
 			_id: '3',
 			question: 'Which two colors mixed together make orange?',
-			image: quiz_default,
+			image: quiz2_3,
 			points: 10,
 			options: [
 				{ _id: '1', text: 'Red and Brown', isRight: false },
@@ -44,17 +49,17 @@ export const quiz2: Quiz = {
 		{
 			_id: '4',
 			question: 'Cool colors are red, yellow and orange.',
-			image: quiz_default,
+			image: quiz2_4,
 			points: 10,
 			options: [
-				{ _id: '1', text: 'True', isRight: true },
-				{ _id: '2', text: 'False', isRight: false },
+				{ _id: '1', text: 'True', isRight: false },
+				{ _id: '2', text: 'False', isRight: true },
 			],
 		},
 		{
 			_id: '5',
 			question: 'The horizon line goes from the top to the bottom of the page.',
-			image: quiz_default,
+			image: quiz2_5,
 			points: 10,
 			options: [
 				{ _id: '1', text: 'True', isRight: false },

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { useQuiz } from '../../Context';
-import { quizes } from '../../database';
+import { quizzes } from '../../database';
 import { Quiz } from '../../database/Quiz.type';
 import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 
@@ -23,7 +23,7 @@ export const QuizContainer = () => {
 	const [showQuiz, setShowQuiz] = useState(false);
 
 	useEffect(() => {
-		const quizDetails = quizes.find((quiz) => quiz._id === quizId);
+		const quizDetails = quizzes.find((quiz) => quiz._id === quizId);
 		if (quizDetails) {
 			dispatch({ type: 'SET_ATTEMPT', payload: { quiz: quizDetails } });
 			setQuiz(quizDetails);

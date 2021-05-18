@@ -2,7 +2,7 @@ import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, Image, Heading, Button } from '@chakra-ui/react';
 import { OptionContainer } from './OptionContainer';
 
-import { btnStyleProps, nextButtonStyleProps } from '../Buttons';
+import { btnStyleProps, nextButtonStyleProps } from '../utils';
 import { useQuiz } from '../../Context';
 import { QuestionContainerProps } from './QuestionContainerProps.type';
 
@@ -22,7 +22,6 @@ export const QuestionContainer = ({
 				alt={question.question}
 				height='auto'
 				width='100%'
-				objectFit='cover'
 				borderRadius='1.5rem'
 			/>
 			<Box py='1rem'>

@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { btnStyleProps, solidPrimaryButtonStyleProps } from '../Buttons';
+import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
 import { Video } from './Video.type';
 import { VideoCard } from './VideoCard';
 
@@ -13,6 +13,8 @@ export const RecommendedSection = ({ type }: { type: string }) => {
 		columns: [1, 2, 3],
 		gap: '1.5rem',
 		px: '1rem',
+		maxW: '67rem',
+		margin: 'auto',
 	};
 
 	useEffect(() => {

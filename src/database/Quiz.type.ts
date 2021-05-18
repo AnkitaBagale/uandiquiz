@@ -36,7 +36,8 @@ export type Quiz = {
 	highScore: UserScore[];
 };
 
-export type TypesOfQuiz = {
+export type CategoryOfQuiz = {
+	_id: string;
 	image: string;
 	type: string;
 	noOfQuiz: number;

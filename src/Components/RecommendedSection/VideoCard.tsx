@@ -1,73 +1,43 @@
-import { Box, Button, Image, Tag, TagLabel } from '@chakra-ui/react';
+import { Box, Image, Link, Tag, TagLabel } from '@chakra-ui/react';
 import {
-	btnStyleProps,
-	solidPrimaryButtonStyleProps,
-} from '../Buttons/Buttons';
+	cardTitleProps,
+	cardWrapperStyleProps,
+	flexStyleProps,
+	imageStyleProps,
+	tagStyleProps,
+	externalLinkStyleProps,
+} from '../utils';
+import { ButtonSolidPrimarySizeSmall } from '../utils/Buttons';
 import { Video } from './Video.type';
 
 export const VideoCard = ({ video }: { video: Video }) => {
 	return (
 		<>
-			<Box
-				maxW='sm'
-				borderRadius='1.5rem'
-				overflow='hidden'
-				mx='auto'
-				boxShadow='md'>
-				<Image
-					src={video.thumbnail}
-					alt={video.name}
-					height='6rem'
-					width='100%'
-					objectFit='cover'
-				/>
+			<Link
+				{...externalLinkStyleProps}
+				href={`https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/${video._id}`}>
+				<Box {...cardWrapperStyleProps}>
+					<Image src={video.thumbnail} alt={video.name} {...imageStyleProps} />
 
-				<Box
-					px='1rem'
-					py='1rem'
-					d='flex'
-					alignItems='center'
-					justifyContent='space-between'>
-					<Box>
-						<Box
-							fontWeight='semibold'
-							as='h4'
-							lineHeight='tight'
-							alignItems='center'>
-							{video.name}
-						</Box>
+					<Box {...flexStyleProps}>
 						<Box>
-							<Tag
-								size='sm'
-								colorScheme='green'
-								borderRadius='full'
-								px='1rem'
-								mt='0.25rem'>
-								<TagLabel>{video.level}</TagLabel>
-							</Tag>
-							<Tag
-								size='sm'
-								colorScheme='green'
-								borderRadius='full'
-								px='1rem'
-								mt='0.25rem'
-								ml='0.5rem'>
-								<TagLabel>{video.type}</TagLabel>
-							</Tag>
+							<Box textAlign='left' {...cardTitleProps}>
+								{video.name}
+							</Box>
+							<Box textAlign='left'>
+								<Tag {...tagStyleProps}>
+									<TagLabel>{video.level}</TagLabel>
+								</Tag>
+								<Tag {...tagStyleProps}>
+									<TagLabel>{video.type}</TagLabel>
+								</Tag>
+							</Box>
 						</Box>
-					</Box>
 
-					<Button
-						{...solidPrimaryButtonStyleProps}
-						{...btnStyleProps}
-						fontSize='0.8rem'
-						as='a'
-						target='_blank'
-						href={`https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/${video._id}`}>
-						Watch now
-					</Button>
+						<ButtonSolidPrimarySizeSmall btnText='Watch Now' />
+					</Box>
 				</Box>
-			</Box>
+			</Link>
 		</>
 	);
 };

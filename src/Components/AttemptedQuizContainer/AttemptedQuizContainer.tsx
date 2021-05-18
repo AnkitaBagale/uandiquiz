@@ -1,6 +1,6 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useQuiz } from '../../Context';
-import { Question } from '../../database/Quiz.type';
+import { Question, Quiz } from '../../database/Quiz.type';
 import { RecommendedSection } from '../RecommendedSection';
 import { AnswerContainer } from './AnswerContainer';
 
@@ -9,68 +9,63 @@ export const AttemptedQuizContainer = () => {
 		state: { attemptedQuiz },
 	} = useQuiz();
 
+	const gridStyleProps = {
+		columns: [1, 2, 2],
+		gap: '1.5rem',
+		px: '1.5rem',
+		mt: '2rem',
+	};
+	const textSizeMdStyleProps = {
+		fontWeight: '500',
+		fontSize: 'x-large',
+		px: '1.5rem',
+	};
+	const textSizeLgStyleProps = {
+		fontSize: 'xx-large',
+		fontWeight: '500',
+		mt: '1rem',
+		px: '1.5rem',
+	};
+
+	const textSizeSmStyleProps = {
+		fontSize: 'large',
+		fontWeight: '500',
+		mt: '1rem',
+		px: '1.5rem',
+	};
+
+	const getColorOfScore = (attemptedQuiz: Quiz): string =>
+		attemptedQuiz.score >= 70 ? 'green.400' : 'red.400';
 	return (
 		<>
 			{attemptedQuiz && (
-				<>
-					<Heading
-						fontWeight='500'
-						as='h1'
-						fontSize='x-large'
-						mt='2rem'
-						px='1.5rem'
-						textAlign='center'>
+				<Box mt='2rem'>
+					<Heading as='h1' textAlign='center' {...textSizeMdStyleProps}>
 						Quiz Result
 					</Heading>
 
-					<Text
-						fontSize='xx-large'
-						fontWeight='500'
-						mt='1rem'
-						px='1.5rem'
-						textAlign='center'>
+					<Text textAlign='center' {...textSizeLgStyleProps}>
 						{attemptedQuiz.score >= 70
 							? '🎉 Congratulations! You won!'
 							: '🙃 Oops! Better luck next time'}
 					</Text>
 
-					<Text
-						fontSize='lg'
-						fontWeight='500'
-						mt='1rem'
-						px='1.5rem'
-						textAlign='center'>
+					<Text textAlign='center' {...textSizeSmStyleProps}>
 						Your Score
 					</Text>
 
-					<Text
-						fontSize='x-large'
-						fontWeight='500'
-						mt='0.25rem'
-						px='1.5rem'
-						textAlign='center'>
-						<Box
-							as='span'
-							color={attemptedQuiz.score >= 70 ? 'green.400' : 'red.400'}>
+					<Text textAlign='center' {...textSizeMdStyleProps}>
+						<Box as='span' color={getColorOfScore(attemptedQuiz)}>
 							{attemptedQuiz.score}
 						</Box>
 						/100
 					</Text>
 
-					<Heading
-						fontSize='xx-large'
-						fontWeight='500'
-						mt='5rem'
-						px='1.5rem'
-						textAlign='center'>
+					<Heading textAlign='center' {...textSizeLgStyleProps} mt='5rem'>
 						Check Answers
 					</Heading>
-					<SimpleGrid
-						columns={[1, 2, 2]}
-						gap={'1.5rem'}
-						px='1.5rem'
-						textAlign='center'
-						mt='2rem'>
+
+					<SimpleGrid textAlign='center' {...gridStyleProps}>
 						{attemptedQuiz.questions.map(
 							(question: Question, index: number): JSX.Element => (
 								<AnswerContainer
@@ -82,7 +77,7 @@ export const AttemptedQuizContainer = () => {
 						)}
 					</SimpleGrid>
 					<RecommendedSection type={attemptedQuiz.type} />
-				</>
+				</Box>
 			)}
 		</>
 	);

@@ -4,7 +4,7 @@ html {
 	scroll-behavior: smooth;
 }
 .App {
-	min-height: 100vh;
+	min-height: calc(100vh - 15rem);
 }
 
 .link-no-style {

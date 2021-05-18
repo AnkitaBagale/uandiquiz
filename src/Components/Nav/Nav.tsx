@@ -110,7 +110,8 @@ const DesktopNav = () => {
 			{NAV_ITEMS.map(
 				(navItem: NavItem): JSX.Element => (
 					<Link to={navItem.href} key={navItem.label}>
-						<Button
+						<Box
+							as='span'
 							p={2}
 							fontSize={'1rem'}
 							fontWeight={400}
@@ -120,7 +121,7 @@ const DesktopNav = () => {
 								color: 'pink.800',
 							}}>
 							{navItem.label}
-						</Button>
+						</Box>
 					</Link>
 				),
 			)}

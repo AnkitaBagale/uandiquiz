@@ -1,18 +1,15 @@
 import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
-import { btnStyleProps, solidPrimaryButtonStyleProps } from '../Buttons';
+import { Box, SimpleGrid, Text } from '@chakra-ui/layout';
+import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
 import promo from './assets/promo.png';
 
 export const Header = () => {
 	return (
 		<>
 			<SimpleGrid columns={[1, 2, 2]} mb='5rem' px='1.5rem'>
-				<Box textAlign='center' padding='4rem 0rem 2rem'>
-					<Heading
-						fontFamily='Roboto Slab'
-						letterSpacing='1px'
-						fontWeight='500'>
+				<Box textAlign='center' pt='4rem' fontSize='xx-large'>
+					<Box fontFamily='Roboto Slab' letterSpacing='1px' fontWeight='500'>
 						<Box color='pink.800' as='span'>
 							U
 						</Box>
@@ -23,12 +20,12 @@ export const Header = () => {
 							I
 						</Box>
 						Quiz
-					</Heading>
+					</Box>
 
-					<Text fontSize='xx-large' mt='1rem'>
+					<Text fontSize='x-large' mt='0.5rem'>
 						Bored? Want to have fun?
 					</Text>
-					<Text fontSize='xx-large'>
+					<Text fontSize='x-large'>
 						Take a Quiz and Enjoy learning with Fun
 					</Text>
 					<Button
@@ -41,13 +38,7 @@ export const Header = () => {
 					</Button>
 				</Box>
 				<Box>
-					<Image
-						src={promo}
-						alt='promo'
-						height='auto'
-						width='100%'
-						objectFit='cover'
-					/>
+					<Image src={promo} alt='promo' height='auto' width='100%' />
 				</Box>
 			</SimpleGrid>
 		</>
