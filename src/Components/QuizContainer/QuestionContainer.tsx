@@ -15,6 +15,15 @@ export const QuestionContainer = ({
 		dispatch,
 	} = useQuiz();
 
+	const updateQuestionOrSubmitQuiz = () => {
+		if (currentQuestionNumber !== attemptedQuiz!.totalQuestions) {
+			dispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
+		} else {
+			dispatch({ type: 'CALCULATE_SCORE' });
+			setShowResult(true);
+		}
+	};
+
 	return (
 		<>
 			<Image
@@ -37,14 +46,7 @@ export const QuestionContainer = ({
 					rightIcon={<ArrowForwardIcon />}
 					{...btnStyleProps}
 					{...nextButtonStyleProps}
-					onClick={() => {
-						if (currentQuestionNumber !== attemptedQuiz!.totalQuestions) {
-							dispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
-						} else {
-							dispatch({ type: 'CALCULATE_SCORE' });
-							setShowResult(true);
-						}
-					}}>
+					onClick={updateQuestionOrSubmitQuiz}>
 					{currentQuestionNumber !== attemptedQuiz!.totalQuestions
 						? 'Next'
 						: 'submit'}
