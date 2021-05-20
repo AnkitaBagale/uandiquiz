@@ -1,14 +1,14 @@
-import { isSelectedOptionRight } from '../../utils';
-import { InitialStateType, ActionType } from './QuizContext.type';
+import { isSelectedOptionRight } from '../../../utils';
+import { InitialStateType, ActionType } from '../QuizContext.type';
 export const initialState: InitialStateType = {
 	attemptedQuiz: null,
 	currentQuestionNumber: 1,
 };
 
-export const quizReducer = (
+export const quizDataReducer = (
 	state: InitialStateType,
 	action: ActionType,
-): typeof initialState => {
+): InitialStateType => {
 	switch (action.type) {
 		case 'SET_ATTEMPT': {
 			return {
