@@ -46,9 +46,9 @@ export const quizDataReducer = (
 						score,
 					},
 				};
+			} else {
+				throw new Error('No quiz attempted');
 			}
-
-			return state;
 		}
 
 		case 'SELECT_OPTION': {
@@ -77,8 +77,9 @@ export const quizDataReducer = (
 						questions: updatedQuestions,
 					},
 				};
+			} else {
+				throw new Error('No quiz attempted');
 			}
-			return state;
 		}
 		case 'RESET': {
 			return {
@@ -87,6 +88,6 @@ export const quizDataReducer = (
 		}
 
 		default:
-			return state;
+			throw new Error('Unhandled type of action');
 	}
 };
