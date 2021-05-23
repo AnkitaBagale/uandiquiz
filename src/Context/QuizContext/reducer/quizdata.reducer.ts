@@ -1,12 +1,5 @@
 import { isSelectedOptionRight } from '../../../utils';
-import { InitialStateType, ActionType } from '../QuizContext.type';
-
-export const initialState: InitialStateType = {
-	attemptedQuiz: null,
-	currentQuestionNumber: 1,
-	categories: [],
-	featuredQuizzes: [],
-};
+import { InitialStateType, ActionType, ScoreData } from '../QuizContext.type';
 
 export const quizDataReducer = (
 	state: InitialStateType,
@@ -48,12 +41,32 @@ export const quizDataReducer = (
 					0,
 				);
 
+				const scoreData: ScoreData = {
+					score: score,
+					quizId: state.attemptedQuiz._id,
+					quizName: state.attemptedQuiz.name,
+					scoreStatus: score >= 70 ? 'PASS' : 'FAIL',
+				};
+
+				const scoreDataFromLocalStorage = localStorage.getItem('scoreBoard');
+				if (scoreDataFromLocalStorage) {
+					const scoreBoardData = JSON.parse(scoreDataFromLocalStorage);
+					scoreBoardData.scores.push(scoreData);
+					localStorage.setItem('scoreBoard', JSON.stringify(scoreBoardData));
+				} else {
+					localStorage.setItem(
+						'scoreBoard',
+						JSON.stringify({ scores: [scoreData] }),
+					);
+				}
+
 				return {
 					...state,
 					attemptedQuiz: {
 						...state.attemptedQuiz,
 						score,
 					},
+					scoreBoard: [...state.scoreBoard, scoreData],
 				};
 			} else {
 				throw new Error('No quiz attempted');

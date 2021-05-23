@@ -20,8 +20,8 @@ const NAV_ITEMS: Array<NavItem> = [
 		href: '/',
 	},
 	{
-		label: 'About',
-		href: '/about',
+		label: 'Score Board',
+		href: '/scoreboard',
 	},
 ];
 

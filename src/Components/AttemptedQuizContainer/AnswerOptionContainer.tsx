@@ -3,11 +3,14 @@ import { Box, SimpleGrid } from '@chakra-ui/react';
 import { Option, Question } from '../../database/Quiz.type';
 
 function OptionCard({ option }: { option: Option }) {
+	console.log({ option });
 	const bgColor = option.isRight
 		? 'green.300'
 		: option.isSelected
 		? 'red.400'
 		: 'gray.400';
+
+	console.log(bgColor);
 
 	const optionCardStyleProps = {
 		boxShadow: 'md',

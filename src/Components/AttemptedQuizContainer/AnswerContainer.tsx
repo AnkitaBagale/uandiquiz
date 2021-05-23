@@ -48,7 +48,7 @@ export const AnswerContainer = ({
 			<Image
 				{...imageStyleProps}
 				src={question.image}
-				alt={question.question}
+				alt='question-reference'
 			/>
 			<Box py='1rem'>
 				<Heading as='h4' size='sm'>

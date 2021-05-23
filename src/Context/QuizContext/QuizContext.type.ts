@@ -1,15 +1,18 @@
-import {
-	Quiz,
-	CategoryOfQuiz,
-	QuizCardFromDb,
-	CategoryFromDb,
-} from '../../database/Quiz.type';
+import { Quiz, CategoryOfQuiz, QuizCardFromDb } from '../../database/Quiz.type';
+
+export type ScoreData = {
+	quizId: string;
+	quizName: string;
+	score: Number;
+	scoreStatus: 'PASS' | 'FAIL';
+};
 
 export type InitialStateType = {
 	attemptedQuiz: Quiz | null;
 	currentQuestionNumber: number;
 	categories: CategoryOfQuiz[];
 	featuredQuizzes: QuizCardFromDb[];
+	scoreBoard: ScoreData[];
 };
 
 export type ContextType = {

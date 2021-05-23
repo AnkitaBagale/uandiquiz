@@ -13,9 +13,11 @@ import { useStateContext } from './Context';
 import axios from 'axios';
 import { APIURL } from './database';
 import { CategoryOfQuiz, QuizCardFromDb } from './database/Quiz.type';
+import { ScoreBoard } from './Components/ScoreBoard/ScoreBoard';
 
 export default function App() {
 	const { dispatch } = useStateContext();
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -56,6 +58,7 @@ export default function App() {
 			<div className='App'>
 				<Routes>
 					<Route path='/' element={<LandingPage />} />
+					<Route path='/scoreboard' element={<ScoreBoard />} />
 					<Route
 						path='/category/:categoryId'
 						element={<CategoryLandingPage />}

@@ -1,1 +1,1 @@
-export { quizDataReducer, initialState } from './quizdata.reducer';
+export { quizDataReducer } from './quizdata.reducer';
