@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useStateContext } from '../../Context';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
 
-export const ScoreBoard = () => {
+export const Dashboard = () => {
 	const {
 		state: { scoreBoard },
 	} = useStateContext();
@@ -33,7 +33,7 @@ export const ScoreBoard = () => {
 	return (
 		<Box padding='1rem' maxW='56rem' margin='auto'>
 			<Heading textAlign='center' pt='1rem'>
-				Score Board
+				Progress Dashboard
 			</Heading>
 			{scoreBoard.length === 0 ? (
 				<Box as='h4' fontSize='xl' textAlign='center' pt='2rem'>

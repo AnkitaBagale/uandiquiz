@@ -4,6 +4,7 @@ import {
 	QuizContainer,
 	Footer,
 	CategoryLandingPage,
+	Dashboard,
 } from './Components';
 import './App.css';
 import { Route, Routes } from 'react-router';
@@ -13,7 +14,6 @@ import { useStateContext } from './Context';
 import axios from 'axios';
 import { APIURL } from './database';
 import { CategoryOfQuiz, QuizCardFromDb } from './database/Quiz.type';
-import { ScoreBoard } from './Components/ScoreBoard/ScoreBoard';
 
 export default function App() {
 	const { dispatch } = useStateContext();
@@ -58,7 +58,7 @@ export default function App() {
 			<div className='App'>
 				<Routes>
 					<Route path='/' element={<LandingPage />} />
-					<Route path='/scoreboard' element={<ScoreBoard />} />
+					<Route path='/dashboard' element={<Dashboard />} />
 					<Route
 						path='/category/:categoryId'
 						element={<CategoryLandingPage />}
