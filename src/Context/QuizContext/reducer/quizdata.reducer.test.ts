@@ -1,4 +1,4 @@
-import { ActionType, InitialStateType } from '../QuizContext.type';
+import { ActionType, InitialStateType, ScoreData } from '../QuizContext.type';
 import { quizDataReducer } from './quizdata.reducer';
 
 describe('testing quiz dispatch', () => {
@@ -180,230 +180,237 @@ describe('testing quiz dispatch', () => {
 		expect(computedState).toEqual(finalState);
 	});
 
-	// test('should calculate the score for attempted quiz and all attempted questions on CALCULATE_SCORE dispatch', () => {
-	// 	//Arrange
+	test('should calculate the score for attempted quiz and all attempted questions on CALCULATE_SCORE dispatch', () => {
+		//Arrange
 
-	// 	const initialState: InitialStateType = {
-	// 		attemptedQuiz: {
-	// 			_id: '124',
-	// 			name: 'Painting And Decorating Quiz',
-	// 			totalQuestions: 2,
-	// 			score: 0,
-	// 			questions: [
-	// 				{
-	// 					_id: '1',
-	// 					question: 'Who painted this series?',
-	// 					points: 10,
-	// 					options: [
-	// 						{
-	// 							_id: '1',
-	// 							text: 'Andy Warhol',
-	// 							isRight: true,
-	// 							isSelected: true,
-	// 						},
-	// 						{
-	// 							_id: '2',
-	// 							text: 'Andy Carpenter',
-	// 							isRight: false,
-	// 							isSelected: false,
-	// 						},
-	// 					],
-	// 				},
+		const initialState: InitialStateType = {
+			attemptedQuiz: {
+				_id: '124',
+				name: 'Painting And Decorating Quiz',
+				totalQuestions: 2,
+				score: 0,
+				questions: [
+					{
+						_id: '1',
+						question: 'Who painted this series?',
+						points: 10,
+						options: [
+							{
+								_id: '1',
+								text: 'Andy Warhol',
+								isRight: true,
+								isSelected: true,
+							},
+							{
+								_id: '2',
+								text: 'Andy Carpenter',
+								isRight: false,
+								isSelected: false,
+							},
+						],
+					},
 
-	// 				{
-	// 					_id: '2',
-	// 					question: 'What is the name of this mysterious painting?',
-	// 					points: 10,
-	// 					negativePoints: 2,
-	// 					options: [
-	// 						{ _id: '1', text: 'Mona Lisa', isRight: true, isSelected: false },
-	// 						{ _id: '2', text: 'Lisa Lisa', isRight: false, isSelected: true },
-	// 					],
-	// 				},
-	// 			],
-	// 		},
-	// 		currentQuestionNumber: 2,
-	// 	} as InitialStateType;
+					{
+						_id: '2',
+						question: 'What is the name of this mysterious painting?',
+						points: 10,
+						negativePoints: 2,
+						options: [
+							{ _id: '1', text: 'Mona Lisa', isRight: true, isSelected: false },
+							{ _id: '2', text: 'Lisa Lisa', isRight: false, isSelected: true },
+						],
+					},
+				],
+			},
+			currentQuestionNumber: 2,
+			scoreBoard: [] as ScoreData[],
+		} as InitialStateType;
 
-	// 	const action: ActionType = {
-	// 		type: 'CALCULATE_SCORE',
-	// 		payload: {
-	// 			quizName: 'Painting And Decorating Quiz',
-	// 			quizId: '124',
-	// 		},
-	// 	};
+		const action: ActionType = {
+			type: 'CALCULATE_SCORE',
+		};
 
-	// 	const finalState = {
-	// 		attemptedQuiz: {
-	// 			_id: '124',
-	// 			name: 'Painting And Decorating Quiz',
-	// 			totalQuestions: 2,
-	// 			score: 8,
-	// 			questions: [
-	// 				{
-	// 					_id: '1',
-	// 					question: 'Who painted this series?',
-	// 					points: 10,
-	// 					options: [
-	// 						{
-	// 							_id: '1',
-	// 							text: 'Andy Warhol',
-	// 							isRight: true,
-	// 							isSelected: true,
-	// 						},
-	// 						{
-	// 							_id: '2',
-	// 							text: 'Andy Carpenter',
-	// 							isRight: false,
-	// 							isSelected: false,
-	// 						},
-	// 					],
-	// 				},
+		const finalState: InitialStateType = {
+			attemptedQuiz: {
+				_id: '124',
+				name: 'Painting And Decorating Quiz',
+				totalQuestions: 2,
+				score: 8,
+				questions: [
+					{
+						_id: '1',
+						question: 'Who painted this series?',
+						points: 10,
+						options: [
+							{
+								_id: '1',
+								text: 'Andy Warhol',
+								isRight: true,
+								isSelected: true,
+							},
+							{
+								_id: '2',
+								text: 'Andy Carpenter',
+								isRight: false,
+								isSelected: false,
+							},
+						],
+					},
 
-	// 				{
-	// 					_id: '2',
-	// 					question: 'What is the name of this mysterious painting?',
-	// 					points: 10,
-	// 					negativePoints: 2,
-	// 					options: [
-	// 						{ _id: '1', text: 'Mona Lisa', isRight: true, isSelected: false },
-	// 						{ _id: '2', text: 'Lisa Lisa', isRight: false, isSelected: true },
-	// 					],
-	// 				},
-	// 			],
-	// 		},
-	// 		currentQuestionNumber: 2,
-	// 		scoreBoard: [
-	// 			{
-	// 				quizName: 'Painting And Decorating Quiz',
-	// 				quizId: '124',
-	// 				score: 8,
-	// 				scoreStatus: 'FAIL',
-	// 			},
-	// 		],
-	// 	} as InitialStateType;
+					{
+						_id: '2',
+						question: 'What is the name of this mysterious painting?',
+						points: 10,
+						negativePoints: 2,
+						options: [
+							{ _id: '1', text: 'Mona Lisa', isRight: true, isSelected: false },
+							{ _id: '2', text: 'Lisa Lisa', isRight: false, isSelected: true },
+						],
+					},
+				],
+			},
+			currentQuestionNumber: 2,
+			scoreBoard: [
+				{
+					quizName: 'Painting And Decorating Quiz',
+					quizId: '124',
+					score: 8,
+					scoreStatus: 'FAIL',
+				},
+			] as ScoreData[],
+		} as InitialStateType;
 
-	// 	//Act
-	// 	const computedState = quizDataReducer(initialState, action);
+		//Act
+		const computedState = quizDataReducer(initialState, action);
 
-	// 	//Assert
-	// 	expect(computedState).toEqual(finalState);
-	// });
+		//Assert
+		expect(computedState).toEqual(finalState);
+	});
 
-	// test('should calculate the score for attempted quiz and skipped questions on CALCULATE_SCORE dispatch', () => {
-	// 	//Arrange
+	test('should calculate the score for attempted quiz and skipped questions on CALCULATE_SCORE dispatch', () => {
+		//Arrange
 
-	// 	const initialState: InitialStateType = {
-	// 		attemptedQuiz: {
-	// 			_id: '124',
-	// 			name: 'Painting And Decorating Quiz',
-	// 			totalQuestions: 2,
-	// 			score: 0,
-	// 			questions: [
-	// 				{
-	// 					_id: '1',
-	// 					question: 'Who painted this series?',
-	// 					points: 10,
-	// 					options: [
-	// 						{
-	// 							_id: '1',
-	// 							text: 'Andy Warhol',
-	// 							isRight: true,
-	// 						},
-	// 						{
-	// 							_id: '2',
-	// 							text: 'Andy Carpenter',
-	// 							isRight: false,
-	// 						},
-	// 					],
-	// 				},
+		const initialState: InitialStateType = {
+			attemptedQuiz: {
+				_id: '124',
+				name: 'Painting And Decorating Quiz',
+				totalQuestions: 2,
+				score: 0,
+				questions: [
+					{
+						_id: '1',
+						question: 'Who painted this series?',
+						points: 10,
+						options: [
+							{
+								_id: '1',
+								text: 'Andy Warhol',
+								isRight: true,
+							},
+							{
+								_id: '2',
+								text: 'Andy Carpenter',
+								isRight: false,
+							},
+						],
+					},
 
-	// 				{
-	// 					_id: '2',
-	// 					question: 'What is the name of this mysterious painting?',
-	// 					points: 10,
-	// 					negativePoints: 2,
-	// 					options: [
-	// 						{ _id: '1', text: 'Mona Lisa', isRight: true },
-	// 						{ _id: '2', text: 'Lisa Lisa', isRight: false },
-	// 					],
-	// 				},
-	// 			],
-	// 		},
-	// 		currentQuestionNumber: 2,
-	// 	} as InitialStateType;
+					{
+						_id: '2',
+						question: 'What is the name of this mysterious painting?',
+						points: 10,
+						negativePoints: 2,
+						options: [
+							{ _id: '1', text: 'Mona Lisa', isRight: true },
+							{ _id: '2', text: 'Lisa Lisa', isRight: false },
+						],
+					},
+				],
+			},
+			currentQuestionNumber: 2,
+			scoreBoard: [] as ScoreData[],
+		} as InitialStateType;
 
-	// 	const action: ActionType = {
-	// 		type: 'CALCULATE_SCORE',
-	// 	};
+		const action: ActionType = {
+			type: 'CALCULATE_SCORE',
+		};
 
-	// 	const finalState: InitialStateType = {
-	// 		attemptedQuiz: {
-	// 			_id: '124',
-	// 			name: 'Painting And Decorating Quiz',
-	// 			totalQuestions: 2,
-	// 			score: -2,
-	// 			questions: [
-	// 				{
-	// 					_id: '1',
-	// 					question: 'Who painted this series?',
-	// 					points: 10,
-	// 					options: [
-	// 						{
-	// 							_id: '1',
-	// 							text: 'Andy Warhol',
-	// 							isRight: true,
-	// 						},
-	// 						{
-	// 							_id: '2',
-	// 							text: 'Andy Carpenter',
-	// 							isRight: false,
-	// 						},
-	// 					],
-	// 				},
+		const finalState: InitialStateType = {
+			attemptedQuiz: {
+				_id: '124',
+				name: 'Painting And Decorating Quiz',
+				totalQuestions: 2,
+				score: -2,
+				questions: [
+					{
+						_id: '1',
+						question: 'Who painted this series?',
+						points: 10,
+						options: [
+							{
+								_id: '1',
+								text: 'Andy Warhol',
+								isRight: true,
+							},
+							{
+								_id: '2',
+								text: 'Andy Carpenter',
+								isRight: false,
+							},
+						],
+					},
 
-	// 				{
-	// 					_id: '2',
-	// 					question: 'What is the name of this mysterious painting?',
-	// 					points: 10,
-	// 					negativePoints: 2,
-	// 					options: [
-	// 						{ _id: '1', text: 'Mona Lisa', isRight: true },
-	// 						{ _id: '2', text: 'Lisa Lisa', isRight: false },
-	// 					],
-	// 				},
-	// 			],
-	// 		},
-	// 		currentQuestionNumber: 2,
-	// 	} as InitialStateType;
+					{
+						_id: '2',
+						question: 'What is the name of this mysterious painting?',
+						points: 10,
+						negativePoints: 2,
+						options: [
+							{ _id: '1', text: 'Mona Lisa', isRight: true },
+							{ _id: '2', text: 'Lisa Lisa', isRight: false },
+						],
+					},
+				],
+			},
+			currentQuestionNumber: 2,
+			scoreBoard: [
+				{
+					quizName: 'Painting And Decorating Quiz',
+					quizId: '124',
+					score: -2,
+					scoreStatus: 'FAIL',
+				},
+			] as ScoreData[],
+		} as InitialStateType;
 
-	// 	//Act
-	// 	const computedState = quizDataReducer(initialState, action);
+		//Act
+		const computedState = quizDataReducer(initialState, action);
 
-	// 	//Assert
-	// 	expect(computedState).toEqual(finalState);
-	// });
+		//Assert
+		expect(computedState).toEqual(finalState);
+	});
 
-	// test('should throw error on CALCULATE_SCORE dispatch when There is no Attempted Quiz', () => {
-	// 	//Arrange
+	test('should throw error on CALCULATE_SCORE dispatch when There is no Attempted Quiz', () => {
+		//Arrange
 
-	// 	const initialState: InitialStateType = {
-	// 		attemptedQuiz: null,
-	// 		currentQuestionNumber: 1,
-	// 	} as InitialStateType;
+		const initialState: InitialStateType = {
+			attemptedQuiz: null,
+			currentQuestionNumber: 1,
+			scoreBoard: [] as ScoreData[],
+		} as InitialStateType;
 
-	// 	const action: ActionType = {
-	// 		type: 'CALCULATE_SCORE',
-	// 	};
+		const action: ActionType = {
+			type: 'CALCULATE_SCORE',
+		};
 
-	// 	//Act
-	// 	const testCallback = () => {
-	// 		quizDataReducer(initialState, action);
-	// 	};
+		//Act
+		const testCallback = () => {
+			quizDataReducer(initialState, action);
+		};
 
-	// 	//Assert
-	// 	expect(testCallback).toThrow(new Error('No quiz attempted'));
-	// });
+		//Assert
+		expect(testCallback).toThrow(new Error('No quiz attempted'));
+	});
 
 	test('should add isSelected true to option selected by user on SELECT_OPTION dispatch when user attempts question', () => {
 		//Arrange

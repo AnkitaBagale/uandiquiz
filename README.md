@@ -7,6 +7,7 @@ U and I Quiz app
 - React + TypeScript
 - Express + MongoDB + Mongoose (https://github.com/AnkitaBagale/uandistore)
 - Local Storage
+- JEST
 
 ### Completed functionalities:
 
@@ -16,6 +17,7 @@ U and I Quiz app
 - Personal dashboard for attempted quizzes using Local Storage
 - Data integration with Backend(MongoDb)
 - Recommended section for learning videos of category same as that of Attempted Quiz, integrated with U&I Video Library database
+- Unit tests are added
 
 ### Upcoming features-
 
