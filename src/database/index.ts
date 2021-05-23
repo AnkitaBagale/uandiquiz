@@ -1,1 +1,3 @@
-export { colors, fonts, categories, quizzes } from './database';
+export { colors, fonts } from './database';
+
+export { APIURL } from './constants';

@@ -1,1 +1,4 @@
-export { useQuiz, QuizDataProvider } from './QuizContext/QuizDataProvider';
+export {
+	useStateContext,
+	QuizDataProvider,
+} from './QuizContext/QuizDataProvider';

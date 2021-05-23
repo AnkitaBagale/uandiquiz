@@ -1,9 +1,10 @@
 import { Heading, SimpleGrid } from '@chakra-ui/react';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { useQuiz } from '../../Context';
-import { quizzes } from '../../database';
+import { useStateContext } from '../../Context';
+import { APIURL } from '../../database';
 import { Quiz } from '../../database/Quiz.type';
 import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 
@@ -14,7 +15,7 @@ export const QuizContainer = () => {
 	const {
 		state: { currentQuestionNumber },
 		dispatch,
-	} = useQuiz();
+	} = useStateContext();
 
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 
@@ -23,11 +24,17 @@ export const QuizContainer = () => {
 	const [showQuiz, setShowQuiz] = useState(false);
 
 	useEffect(() => {
-		const quizDetails = quizzes.find((quiz) => quiz._id === quizId);
-		if (quizDetails) {
-			dispatch({ type: 'SET_ATTEMPT', payload: { quiz: quizDetails } });
-			setQuiz(quizDetails);
-		}
+		(async () => {
+			try {
+				const {
+					data: { response },
+				} = await axios.get<{ response: Quiz }>(`${APIURL}/quizzes/${quizId}`);
+				dispatch({ type: 'SET_ATTEMPT', payload: { quiz: response } });
+				setQuiz(response);
+			} catch (error) {
+				console.log(error);
+			}
+		})();
 
 		return () => {
 			dispatch({ type: 'RESET' });

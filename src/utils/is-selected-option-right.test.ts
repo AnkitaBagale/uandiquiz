@@ -19,9 +19,7 @@ describe('test selected option from question', () => {
 		//Assert
 		expect(computedOutput).toBe(expectedResult);
 	});
-});
 
-describe('test selected option from question', () => {
 	test("should check attempted question's answer is wrong", () => {
 		//Arrange
 
@@ -40,9 +38,7 @@ describe('test selected option from question', () => {
 		//Assert
 		expect(computedOutput).toBe(expectedResult);
 	});
-});
 
-describe('test selected option from question', () => {
 	test("should check not-attempted question's answer is wrong", () => {
 		//Arrange
 

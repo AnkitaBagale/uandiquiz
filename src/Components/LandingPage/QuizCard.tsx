@@ -1,6 +1,6 @@
 import { Box, Image, Tag, TagLabel } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { Quiz } from '../../database/Quiz.type';
+import { QuizCardFromDb } from '../../database/Quiz.type';
 import {
 	ButtonSolidPrimarySizeSmall,
 	tagStyleProps,
@@ -10,7 +10,7 @@ import {
 	cardWrapperStyleProps,
 } from '../utils';
 
-export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
+export const QuizCard = ({ quiz }: { quiz: QuizCardFromDb }) => {
 	return (
 		<>
 			<Link to={`/quiz/${quiz._id}`}>
@@ -24,7 +24,7 @@ export const QuizCard = ({ quiz }: { quiz: Quiz }) => {
 							</Box>
 							<Box textAlign='left'>
 								<Tag {...tagStyleProps}>
-									<TagLabel>{quiz.type}</TagLabel>
+									<TagLabel>{quiz.category}</TagLabel>
 								</Tag>
 								<Tag {...tagStyleProps}>
 									<TagLabel>{quiz.level}</TagLabel>

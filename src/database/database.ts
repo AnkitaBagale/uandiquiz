@@ -1,12 +1,3 @@
-import img1 from './assets/img1.png';
-import img2 from './assets/img2.png';
-import img3 from './assets/img3.png';
-import { Quiz, CategoryOfQuiz } from './Quiz.type';
-
-import { quiz1 } from './quiz1';
-import { quiz2 } from './quiz2';
-import { quiz3 } from './quiz3';
-
 export const colors = {
 	pink: {
 		900: '#e63961',
@@ -35,36 +26,3 @@ export const fonts = {
 	heading: 'Roboto',
 	body: 'Roboto',
 };
-
-export const categories: CategoryOfQuiz[] = [
-	{
-		_id: '1',
-		image: img1,
-		type: 'Painting',
-		noOfQuiz: 2,
-		cardColor: '#B5DCCD',
-	},
-	{
-		_id: '2',
-		image: img3,
-		type: 'Drawing',
-		noOfQuiz: 1,
-		cardColor: '#FCBC7B',
-	},
-	{
-		_id: '3',
-		image: img2,
-		type: 'Pencil Sketching',
-		noOfQuiz: 0,
-		cardColor: '#FCBCBC',
-	},
-	{
-		_id: '4',
-		image: img1,
-		type: 'Charcoal Painting',
-		noOfQuiz: 0,
-		cardColor: '#A4C9D7',
-	},
-];
-
-export const quizzes: Quiz[] = [quiz2, quiz1, quiz3];

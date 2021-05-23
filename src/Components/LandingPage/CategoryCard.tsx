@@ -15,20 +15,20 @@ export const CategoryCard = ({ category }: { category: CategoryOfQuiz }) => {
 	};
 
 	return (
-		<Link to={`/category/${category.type}`}>
+		<Link to={`/category/${category._id}`}>
 			<Box
 				key={category._id}
-				bg={category.cardColor}
+				bg={category.featuredColor}
 				textAlign='center'
 				{...cardWrapperStyleProps}>
 				<Image width='100%' src={category.image} alt='quiz' />
 
 				<Heading fontSize='1.2rem' fontWeight='500'>
-					{category.type}
+					{category.name}
 				</Heading>
 
 				<Text fontSize='1rem'>
-					{category.noOfQuiz ? `${category.noOfQuiz} Quiz` : 'Coming soon..'}
+					{category.quizzes ? `${category.quizzes} Quiz` : 'Coming soon..'}
 				</Text>
 			</Box>
 		</Link>

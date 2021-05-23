@@ -3,7 +3,7 @@ import { Box, Image, Heading, Button } from '@chakra-ui/react';
 import { OptionContainer } from './OptionContainer';
 
 import { btnStyleProps, nextButtonStyleProps } from '../utils';
-import { useQuiz } from '../../Context';
+import { useStateContext } from '../../Context';
 import { QuestionContainerProps } from './QuestionContainerProps.type';
 
 export const QuestionContainer = ({
@@ -13,7 +13,7 @@ export const QuestionContainer = ({
 	const {
 		state: { currentQuestionNumber, attemptedQuiz },
 		dispatch,
-	} = useQuiz();
+	} = useStateContext();
 
 	const updateQuestionOrSubmitQuiz = () => {
 		if (currentQuestionNumber !== attemptedQuiz!.totalQuestions) {

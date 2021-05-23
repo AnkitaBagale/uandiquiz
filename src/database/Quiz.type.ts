@@ -25,13 +25,12 @@ export type UserScore = {
 
 export type Quiz = {
 	_id: string;
-	userid?: string;
-	score: number;
+	score?: number;
 	name: string;
 	image: string;
 	totalQuestions: number;
 	questions: Question[];
-	type: string;
+	category: string;
 	level: string;
 	highScore: UserScore[];
 };
@@ -39,7 +38,21 @@ export type Quiz = {
 export type CategoryOfQuiz = {
 	_id: string;
 	image: string;
-	type: string;
-	noOfQuiz: number;
-	cardColor: string;
+	name: string;
+	quizzes: number;
+	featuredColor: string;
+};
+
+export type QuizCardFromDb = {
+	_id: string;
+	name: string;
+	image: string;
+	category: string;
+	level: string;
+};
+
+export type CategoryFromDb = {
+	_id: string;
+	name: string;
+	quizzes: QuizCardFromDb[];
 };

@@ -10,7 +10,7 @@ export const tagStyleProps = {
 };
 
 export const imageStyleProps = {
-	height: '9rem',
+	height: '12rem',
 	width: '100%',
 };
 
@@ -30,7 +30,6 @@ export const flexStyleProps = {
 
 export const cardWrapperStyleProps = {
 	height: '100%',
-	maxW: 'sm',
 	borderRadius: '1.5rem',
 	overflow: 'hidden',
 	mx: 'auto',

@@ -1,8 +1,11 @@
 import { isSelectedOptionRight } from '../../../utils';
 import { InitialStateType, ActionType } from '../QuizContext.type';
+
 export const initialState: InitialStateType = {
 	attemptedQuiz: null,
 	currentQuestionNumber: 1,
+	categories: [],
+	featuredQuizzes: [],
 };
 
 export const quizDataReducer = (
@@ -20,6 +23,12 @@ export const quizDataReducer = (
 			};
 		}
 
+		case 'SET_CATEGORIES': {
+			return { ...state, categories: action.payload.categories };
+		}
+		case 'SET_FEATURED_QUIZZES': {
+			return { ...state, featuredQuizzes: action.payload.featuredQuizzes };
+		}
 		case 'INCREMENT_QUESTION_NUMBER': {
 			return {
 				...state,
@@ -83,7 +92,9 @@ export const quizDataReducer = (
 		}
 		case 'RESET': {
 			return {
-				...initialState,
+				...state,
+				attemptedQuiz: null,
+				currentQuestionNumber: 1,
 			};
 		}
 

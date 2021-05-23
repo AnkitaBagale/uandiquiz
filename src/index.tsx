@@ -18,12 +18,12 @@ const rootElement = document.getElementById('root');
 ReactDOM.render(
 	<StrictMode>
 		<ChakraProvider theme={theme}>
-			<QuizDataProvider>
-				<Router>
+			<Router>
+				<QuizDataProvider>
 					<ScrollToTop />
 					<App />
-				</Router>
-			</QuizDataProvider>
+				</QuizDataProvider>
+			</Router>
 		</ChakraProvider>
 	</StrictMode>,
 	rootElement,

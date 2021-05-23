@@ -14,4 +14,4 @@ export const QuizDataProvider: React.FC = ({ children }) => {
 	);
 };
 
-export const useQuiz = () => useContext(QuizDataContext);
+export const useStateContext = () => useContext(QuizDataContext);

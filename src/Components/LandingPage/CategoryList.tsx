@@ -1,9 +1,11 @@
 import { Heading, SimpleGrid } from '@chakra-ui/layout';
-import { categories } from '../../database';
-import { CategoryOfQuiz } from '../../database/Quiz.type';
+import { useStateContext } from '../../Context';
 import { CategoryCard } from './CategoryCard';
 
 export const CategoryList = () => {
+	const {
+		state: { categories },
+	} = useStateContext();
 	const gridStyleProps = {
 		columns: [2, 2, 4],
 		maxW: ['33rem', '33rem', '67rem'],
@@ -22,7 +24,7 @@ export const CategoryList = () => {
 
 			<SimpleGrid {...gridStyleProps}>
 				{categories.map(
-					(typeOfQuiz: CategoryOfQuiz): JSX.Element => (
+					(typeOfQuiz): JSX.Element => (
 						<CategoryCard key={typeOfQuiz._id} category={typeOfQuiz} />
 					),
 				)}

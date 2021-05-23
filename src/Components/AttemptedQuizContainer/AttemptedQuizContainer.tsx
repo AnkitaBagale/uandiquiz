@@ -1,5 +1,5 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
-import { useQuiz } from '../../Context';
+import { useStateContext } from '../../Context';
 import { Question, Quiz } from '../../database/Quiz.type';
 import { RecommendedSection } from '../RecommendedSection';
 import { AnswerContainer } from './AnswerContainer';
@@ -7,7 +7,7 @@ import { AnswerContainer } from './AnswerContainer';
 export const AttemptedQuizContainer = () => {
 	const {
 		state: { attemptedQuiz },
-	} = useQuiz();
+	} = useStateContext();
 
 	const gridStyleProps = {
 		columns: [1, 2, 2],
@@ -35,7 +35,7 @@ export const AttemptedQuizContainer = () => {
 	};
 
 	const getColorOfScore = (attemptedQuiz: Quiz): string =>
-		attemptedQuiz.score >= 70 ? 'green.400' : 'red.400';
+		attemptedQuiz?.score && attemptedQuiz.score >= 70 ? 'green.400' : 'red.400';
 	return (
 		<>
 			{attemptedQuiz && (
@@ -45,7 +45,7 @@ export const AttemptedQuizContainer = () => {
 					</Heading>
 
 					<Text textAlign='center' {...textSizeLgStyleProps}>
-						{attemptedQuiz.score >= 70
+						{attemptedQuiz?.score && attemptedQuiz.score >= 70
 							? '🎉 Congratulations! You won!'
 							: '🙃 Oops! Better luck next time'}
 					</Text>
@@ -76,7 +76,7 @@ export const AttemptedQuizContainer = () => {
 							),
 						)}
 					</SimpleGrid>
-					<RecommendedSection type={attemptedQuiz.type} />
+					<RecommendedSection type={attemptedQuiz.category} />
 				</Box>
 			)}
 		</>

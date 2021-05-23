@@ -7,7 +7,7 @@ describe('testing quiz dispatch', () => {
 		const initialState: InitialStateType = {
 			attemptedQuiz: null,
 			currentQuestionNumber: 1,
-		};
+		} as InitialStateType;
 
 		const action: ActionType = {
 			type: 'SET_ATTEMPT',
@@ -41,7 +41,7 @@ describe('testing quiz dispatch', () => {
 						},
 					],
 
-					type: 'Painting',
+					category: 'Painting',
 					level: 'Level 2',
 					highScore: [
 						{ _id: '1', userId: '123', score: 25 },
@@ -82,7 +82,7 @@ describe('testing quiz dispatch', () => {
 					},
 				],
 
-				type: 'Painting',
+				category: 'Painting',
 				level: 'Level 2',
 				highScore: [
 					{ _id: '1', userId: '123', score: 25 },
@@ -91,7 +91,7 @@ describe('testing quiz dispatch', () => {
 				image: '',
 			},
 			currentQuestionNumber: 1,
-		};
+		} as InitialStateType;
 
 		//Act
 		const computedState = quizDataReducer(initialState, action);
@@ -99,9 +99,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should increment current question number on INCREMENT_QUESTION_NUMBER dispatch', () => {
 		//Arrange
 		const initialState: InitialStateType = {
@@ -122,9 +120,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should reset the quiz context to initial state on RESET dispatch', () => {
 		//Arrange
 		const initialState: InitialStateType = {
@@ -157,7 +153,7 @@ describe('testing quiz dispatch', () => {
 					},
 				],
 
-				type: 'Painting',
+				category: 'Painting',
 				level: 'Level 2',
 				highScore: [
 					{ _id: '1', userId: '123', score: 25 },
@@ -166,7 +162,7 @@ describe('testing quiz dispatch', () => {
 				image: '',
 			},
 			currentQuestionNumber: 2,
-		};
+		} as InitialStateType;
 
 		const action: ActionType = {
 			type: 'RESET',
@@ -175,7 +171,7 @@ describe('testing quiz dispatch', () => {
 		const finalState: InitialStateType = {
 			attemptedQuiz: null,
 			currentQuestionNumber: 1,
-		};
+		} as InitialStateType;
 
 		//Act
 		const computedState = quizDataReducer(initialState, action);
@@ -183,9 +179,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should calculate the score for attempted quiz and all attempted questions on CALCULATE_SCORE dispatch', () => {
 		//Arrange
 
@@ -283,9 +277,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should calculate the score for attempted quiz and skipped questions on CALCULATE_SCORE dispatch', () => {
 		//Arrange
 
@@ -379,9 +371,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should throw error on CALCULATE_SCORE dispatch when There is no Attempted Quiz', () => {
 		//Arrange
 
@@ -402,9 +392,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(testCallback).toThrow(new Error('No quiz attempted'));
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should add isSelected true to option selected by user on SELECT_OPTION dispatch when user attempts question', () => {
 		//Arrange
 		const initialState: InitialStateType = {
@@ -503,9 +491,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(computedState).toEqual(finalState);
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should throw error on SELECT_OPTION dispatch when There is no Attempted Quiz', () => {
 		//Arrange
 
@@ -530,9 +516,7 @@ describe('testing quiz dispatch', () => {
 		//Assert
 		expect(testCallback).toThrow(new Error('No quiz attempted'));
 	});
-});
 
-describe('testing quiz dispatch', () => {
 	test('should throw error on dispatch with invalid action type', () => {
 		//Arrange
 

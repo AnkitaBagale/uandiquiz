@@ -1,8 +1,15 @@
-import { Quiz } from '../../database/Quiz.type';
+import {
+	Quiz,
+	CategoryOfQuiz,
+	QuizCardFromDb,
+	CategoryFromDb,
+} from '../../database/Quiz.type';
 
 export type InitialStateType = {
 	attemptedQuiz: Quiz | null;
 	currentQuestionNumber: number;
+	categories: CategoryOfQuiz[];
+	featuredQuizzes: QuizCardFromDb[];
 };
 
 export type ContextType = {
@@ -14,6 +21,14 @@ export type ActionType =
 	| {
 			type: 'SET_ATTEMPT';
 			payload: { quiz: Quiz };
+	  }
+	| {
+			type: 'SET_CATEGORIES';
+			payload: { categories: CategoryOfQuiz[] };
+	  }
+	| {
+			type: 'SET_FEATURED_QUIZZES';
+			payload: { featuredQuizzes: QuizCardFromDb[] };
 	  }
 	| {
 			type: 'INCREMENT_QUESTION_NUMBER';

@@ -3,7 +3,6 @@ import {
 	Flex,
 	Text,
 	IconButton,
-	Button,
 	Stack,
 	Collapse,
 	useDisclosure,
@@ -79,22 +78,23 @@ export const Nav = () => {
 						</Flex>
 					</Flex>
 				</Flex>
-
-				<Button
-					href={'#'}
-					_hover={{
-						bg: 'gray.100',
-					}}
-					p={0}>
-					<Avatar
-						size='sm'
-						bg={'gray.700'}
+				<>
+					<Box
+						as='span'
 						_hover={{
-							bg: 'gray.800',
+							bg: 'gray.100',
 						}}
-						src='https://bit.ly/broken-link'
-					/>
-				</Button>
+						p={0}>
+						<Avatar
+							size='sm'
+							bg={'gray.700'}
+							_hover={{
+								bg: 'gray.800',
+							}}
+							src='https://bit.ly/broken-link'
+						/>
+					</Box>
+				</>
 			</Flex>
 
 			<Collapse in={isOpen} animateOpacity>
