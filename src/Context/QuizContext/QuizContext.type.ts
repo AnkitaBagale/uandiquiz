@@ -1,4 +1,4 @@
-import { Quiz, CategoryOfQuiz, QuizCardFromDb } from '../../database/Quiz.type';
+import { Quiz, CategoryOfQuiz, QuizCardFromDb } from './Quiz.type';
 
 export type ScoreData = {
 	quizId: string;

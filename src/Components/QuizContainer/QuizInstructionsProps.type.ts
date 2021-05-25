@@ -1,4 +1,4 @@
-import { Quiz } from '../../database/Quiz.type';
+import { Quiz } from '../../Context/QuizContext/Quiz.type';
 
 export type QuizInstructionsProps = {
 	quiz: Quiz;

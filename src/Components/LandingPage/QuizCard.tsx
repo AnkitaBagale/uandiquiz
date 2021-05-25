@@ -1,6 +1,6 @@
 import { Box, Image, Tag, TagLabel } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { QuizCardFromDb } from '../../database/Quiz.type';
+import { QuizCardFromDb } from '../../Context/QuizContext/Quiz.type';
 import {
 	ButtonSolidPrimarySizeSmall,
 	tagStyleProps,

@@ -3,33 +3,17 @@ import { Box, Heading } from '@chakra-ui/layout';
 import { Link } from 'react-router-dom';
 import { useStateContext } from '../../Context';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
+import {
+	getColorAccordingToResultStatus,
+	scoreListWrapperProps,
+	scoreTextWrapperProps,
+} from './utils';
 
 export const Dashboard = () => {
 	const {
 		state: { scoreBoard },
 	} = useStateContext();
 
-	const scoreListWrapperProps = {
-		transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
-		_hover: {
-			transform: 'scale(1.01)',
-		},
-		d: 'flex',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		minH: '5rem',
-		borderRadius: 'xl',
-		padding: '1rem',
-		borderWidth: '2px',
-		mb: '1rem',
-	};
-
-	const scoreTextWrapperProps = {
-		fontWeight: '500',
-		boxShadow: 'md',
-		p: '0.5rem 1rem',
-		borderRadius: 'xl',
-	};
 	return (
 		<Box padding='1rem' maxW='56rem' margin='auto'>
 			<Heading textAlign='center' pt='1rem'>
@@ -46,9 +30,9 @@ export const Dashboard = () => {
 							<Link to={`/quiz/${data.quizId}`}>
 								<Box
 									{...scoreListWrapperProps}
-									borderColor={
-										data.scoreStatus === 'PASS' ? '#B5DCCD' : '#FCBCBC'
-									}>
+									borderColor={getColorAccordingToResultStatus(
+										data.scoreStatus,
+									)}>
 									<Box>
 										<Heading fontSize='lg'>{data.quizName}</Heading>
 										<Button
@@ -60,7 +44,7 @@ export const Dashboard = () => {
 									</Box>
 									<Box
 										{...scoreTextWrapperProps}
-										bg={data.scoreStatus === 'PASS' ? '#B5DCCD' : '#FCBCBC'}>
+										bg={getColorAccordingToResultStatus(data.scoreStatus)}>
 										<Box as='span' pr='1rem'>
 											{data.score}
 										</Box>

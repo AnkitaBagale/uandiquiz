@@ -1,18 +1,11 @@
-import { CategoryOfQuiz } from '../../database/Quiz.type';
+import { CategoryOfQuiz } from '../../../Context/QuizContext/Quiz.type';
 import { Box, Heading, Image, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { cardWrapperStyleProps } from './category-card-style-props';
 
 export const CategoryCard = ({ category }: { category: CategoryOfQuiz }) => {
-	const cardWrapperStyleProps = {
-		borderRadius: '1.5rem',
-		width: '100%',
-		height: '100%',
-		maxW: '14rem',
-		m: 'auto',
-		fontSize: 'x-large',
-		cursor: 'pointer',
-		p: '1rem',
-	};
+	const renderNumberOfQuizzesOrComingSoon = (): string =>
+		category.quizzes ? `${category.quizzes} Quiz` : 'Coming soon..';
 
 	return (
 		<Link to={`/category/${category._id}`}>
@@ -27,9 +20,7 @@ export const CategoryCard = ({ category }: { category: CategoryOfQuiz }) => {
 					{category.name}
 				</Heading>
 
-				<Text fontSize='1rem'>
-					{category.quizzes ? `${category.quizzes} Quiz` : 'Coming soon..'}
-				</Text>
+				<Text fontSize='1rem'>{renderNumberOfQuizzesOrComingSoon()}</Text>
 			</Box>
 		</Link>
 	);

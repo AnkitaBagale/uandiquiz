@@ -12,8 +12,11 @@ import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { useStateContext } from './Context';
 import axios from 'axios';
-import { APIURL } from './database';
-import { CategoryOfQuiz, QuizCardFromDb } from './database/Quiz.type';
+import { APIURL } from './utils';
+import {
+	CategoryOfQuiz,
+	QuizCardFromDb,
+} from './Context/QuizContext/Quiz.type';
 
 export default function App() {
 	const { dispatch } = useStateContext();

@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 import { useStateContext } from '../../Context';
-import { APIURL } from '../../database';
-import { Quiz } from '../../database/Quiz.type';
+import { APIURL } from '../../utils';
+import { Quiz } from '../../Context/QuizContext/Quiz.type';
 import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 
 import { QuestionContainer } from './QuestionContainer';

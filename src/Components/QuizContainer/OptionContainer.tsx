@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, useRadio, useRadioGroup } from '@chakra-ui/react';
 import { useStateContext } from '../../Context';
-import { Option, Question } from '../../database/Quiz.type';
+import { Option, Question } from '../../Context/QuizContext/Quiz.type';
 
 function RadioCard(props: any) {
 	const { getInputProps, getCheckboxProps } = useRadio(props.radio);

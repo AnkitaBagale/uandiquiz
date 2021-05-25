@@ -1,4 +1,4 @@
-import { Question } from '../../database/Quiz.type';
+import { Question } from '../../Context/QuizContext/Quiz.type';
 
 export type QuestionContainerProps = {
 	question: Question;

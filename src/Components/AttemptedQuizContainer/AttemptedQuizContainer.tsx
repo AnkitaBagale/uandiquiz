@@ -1,41 +1,22 @@
 import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/layout';
 import { useStateContext } from '../../Context';
-import { Question, Quiz } from '../../database/Quiz.type';
+import { Question } from '../../Context/QuizContext/Quiz.type';
 import { RecommendedSection } from '../RecommendedSection';
 import { AnswerContainer } from './AnswerContainer';
+import {
+	gridStyleProps,
+	textSizeMdStyleProps,
+	textSizeLgStyleProps,
+	textSizeSmStyleProps,
+	getResultText,
+	getColorOfScore,
+} from './utils';
 
 export const AttemptedQuizContainer = () => {
 	const {
 		state: { attemptedQuiz },
 	} = useStateContext();
 
-	const gridStyleProps = {
-		columns: [1, 2, 2],
-		gap: '1.5rem',
-		px: '1.5rem',
-		mt: '2rem',
-	};
-	const textSizeMdStyleProps = {
-		fontWeight: '500',
-		fontSize: 'x-large',
-		px: '1.5rem',
-	};
-	const textSizeLgStyleProps = {
-		fontSize: 'xx-large',
-		fontWeight: '500',
-		mt: '1rem',
-		px: '1.5rem',
-	};
-
-	const textSizeSmStyleProps = {
-		fontSize: 'large',
-		fontWeight: '500',
-		mt: '1rem',
-		px: '1.5rem',
-	};
-
-	const getColorOfScore = (attemptedQuiz: Quiz): string =>
-		attemptedQuiz?.score && attemptedQuiz.score >= 70 ? 'green.400' : 'red.400';
 	return (
 		<>
 			{attemptedQuiz && (
@@ -45,9 +26,7 @@ export const AttemptedQuizContainer = () => {
 					</Heading>
 
 					<Text textAlign='center' {...textSizeLgStyleProps}>
-						{attemptedQuiz?.score && attemptedQuiz.score >= 70
-							? '🎉 Congratulations! You won!'
-							: '🙃 Oops! Better luck next time'}
+						{getResultText(attemptedQuiz)}
 					</Text>
 
 					<Text textAlign='center' {...textSizeSmStyleProps}>
@@ -65,7 +44,7 @@ export const AttemptedQuizContainer = () => {
 						Check Answers
 					</Heading>
 
-					<SimpleGrid textAlign='center' {...gridStyleProps}>
+					<SimpleGrid textAlign='center' px='1.5rem' {...gridStyleProps}>
 						{attemptedQuiz.questions.map(
 							(question: Question, index: number): JSX.Element => (
 								<AnswerContainer
