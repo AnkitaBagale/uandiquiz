@@ -1,6 +1,1 @@
-export {
-	iconStyleProps,
-	footerWrapperStyleProps,
-	buttonGroupStyleProps,
-	copyRightTextStyleProps,
-} from './footer-style-props';
+export * from './footer-style-props';

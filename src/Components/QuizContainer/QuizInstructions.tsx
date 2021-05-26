@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/layout';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
 import { QuizInstructionsProps } from './QuizInstructionsProps.type';
+import { instructionsContainerStyleProps, listStyleProps } from './utils';
 
 export const QuizInstructions = ({
 	quiz,
@@ -17,15 +18,10 @@ export const QuizInstructions = ({
 }: QuizInstructionsProps) => {
 	return (
 		<>
-			<Container
-				border='1px'
-				textAlign='center'
-				borderColor='pink.300'
-				p='0rem 1.5rem 2rem 1.5rem'
-				my='2rem'>
+			<Container {...instructionsContainerStyleProps}>
 				<Heading mt='2rem'>{quiz.name}</Heading>
 
-				<List spacing={3} mt='2rem' textAlign='left'>
+				<List {...listStyleProps}>
 					<ListItem>
 						<ListIcon as={StarIcon} color='#FCBC7B' />
 						Each right answer scores 10 Points

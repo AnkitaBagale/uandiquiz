@@ -10,6 +10,7 @@ import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 
 import { QuestionContainer } from './QuestionContainer';
 import { QuizInstructions } from './QuizInstructions';
+import { gridStyleProps } from './utils';
 
 export const QuizContainer = () => {
 	const {
@@ -54,12 +55,7 @@ export const QuizContainer = () => {
 							<Heading mt='2rem' px='1.5rem' textAlign='center'>
 								{quiz.name}
 							</Heading>
-							<SimpleGrid
-								columns={[1, 2, 2]}
-								gap={'1.5rem'}
-								px='1.5rem'
-								textAlign='center'
-								my='2rem'>
+							<SimpleGrid {...gridStyleProps}>
 								<QuestionContainer
 									key={quiz.questions[currentQuestionNumber - 1]._id}
 									question={quiz.questions[currentQuestionNumber - 1]}

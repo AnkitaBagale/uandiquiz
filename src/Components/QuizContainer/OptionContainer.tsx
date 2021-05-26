@@ -1,6 +1,7 @@
 import { Box, SimpleGrid, useRadio, useRadioGroup } from '@chakra-ui/react';
 import { useStateContext } from '../../Context';
 import { Option, Question } from '../../Context/QuizContext/Quiz.type';
+import { optionsGridStyleProps } from './utils';
 
 function RadioCard(props: any) {
 	const { getInputProps, getCheckboxProps } = useRadio(props.radio);
@@ -63,7 +64,7 @@ export const OptionContainer = ({ question }: { question: Question }) => {
 	const group = getRootProps();
 
 	return (
-		<SimpleGrid columns={[2, 2, 2]} gap='1.5rem' mt='2rem' {...group}>
+		<SimpleGrid {...optionsGridStyleProps} {...group}>
 			{options.map((option: Option): JSX.Element => {
 				const radio = getRadioProps({
 					value: option._id,

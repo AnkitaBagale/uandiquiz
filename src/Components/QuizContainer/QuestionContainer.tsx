@@ -5,6 +5,7 @@ import { OptionContainer } from './OptionContainer';
 import { btnStyleProps, nextButtonStyleProps } from '../utils';
 import { useStateContext } from '../../Context';
 import { QuestionContainerProps } from './QuestionContainerProps.type';
+import { imageStyleProps } from './utils';
 
 export const QuestionContainer = ({
 	question,
@@ -26,13 +27,7 @@ export const QuestionContainer = ({
 
 	return (
 		<>
-			<Image
-				src={question.image}
-				alt='question-reference'
-				height='auto'
-				width='100%'
-				borderRadius='1.5rem'
-			/>
+			<Image src={question.image} {...imageStyleProps} />
 			<Box py='1rem'>
 				<Heading as='h4' size='sm'>
 					Question {currentQuestionNumber}

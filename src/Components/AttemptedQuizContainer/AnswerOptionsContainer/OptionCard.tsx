@@ -1,6 +1,7 @@
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { Box } from '@chakra-ui/react';
 import { Option } from '../../../Context/QuizContext/Quiz.type';
+import { optionCardStyleProps } from './option-card-style-props';
 
 export const OptionCard = ({ option }: { option: Option }) => {
 	const bgColor = option.isRight
@@ -9,18 +10,8 @@ export const OptionCard = ({ option }: { option: Option }) => {
 		? 'red.400'
 		: 'gray.400';
 
-	const optionCardStyleProps = {
-		boxShadow: 'md',
-		borderWidth: '1px',
-		borderRadius: 'md',
-		bg: bgColor,
-		color: 'gray.800',
-		fontWeight: 'bold',
-		p: '1rem',
-	};
-
 	return (
-		<Box {...optionCardStyleProps}>
+		<Box {...optionCardStyleProps} bg={bgColor}>
 			<Box>
 				{option.isSelected && option.isRight && <CheckIcon mr='2' />}
 				{option.isSelected && !option.isRight && <CloseIcon mr='2' />}

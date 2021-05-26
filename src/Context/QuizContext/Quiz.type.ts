@@ -1,9 +1,6 @@
 export type Option = {
 	_id: string;
 	text: string;
-	/**
-	 * For right answer make this true
-	 */
 	isRight: boolean;
 	isSelected?: boolean;
 };

@@ -1,4 +1,1 @@
-export {
-	gridStyleProps,
-	headingStyleProps,
-} from './category-landing-page-style-props';
+export * from './category-landing-page-style-props';

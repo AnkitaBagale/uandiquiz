@@ -13,6 +13,14 @@ import { Link } from 'react-router-dom';
 
 import './nav.css';
 import { NavItem } from './NavItem.type';
+import {
+	iconWrapperStyleProps,
+	navWrapperStyleProps,
+	avatarStyleProps,
+	navItemLabelStyleProps,
+	avatarWrapperStyleProps,
+	mobileNavItemWrapperStyleProps,
+} from './nav-style-props';
 
 const NAV_ITEMS: Array<NavItem> = [
 	{
@@ -30,22 +38,9 @@ export const Nav = () => {
 
 	return (
 		<Box position='sticky' top='0' zIndex={1}>
-			<Flex
-				bg='white'
-				color='gray.800'
-				minH={'60px'}
-				py={{ base: 2 }}
-				px={{ base: '1.5rem' }}
-				borderBottom={1}
-				borderStyle={'solid'}
-				borderColor='gray.200'
-				align={'center'}
-				justifyContent='space-between'>
+			<Flex {...navWrapperStyleProps}>
 				<Flex alignItems='center'>
-					<Flex
-						flex={{ base: 1, md: 'auto' }}
-						ml={{ base: -2 }}
-						display={{ base: 'flex', md: 'none' }}>
+					<Flex {...iconWrapperStyleProps}>
 						<IconButton
 							onClick={onToggle}
 							icon={
@@ -79,20 +74,8 @@ export const Nav = () => {
 					</Flex>
 				</Flex>
 				<>
-					<Box
-						as='span'
-						_hover={{
-							bg: 'gray.100',
-						}}
-						p={0}>
-						<Avatar
-							size='sm'
-							bg={'gray.700'}
-							_hover={{
-								bg: 'gray.800',
-							}}
-							src='https://bit.ly/broken-link'
-						/>
+					<Box {...avatarWrapperStyleProps}>
+						<Avatar {...avatarStyleProps} src='https://bit.ly/broken-link' />
 					</Box>
 				</>
 			</Flex>
@@ -110,18 +93,7 @@ const DesktopNav = () => {
 			{NAV_ITEMS.map(
 				(navItem: NavItem): JSX.Element => (
 					<Link to={navItem.href} key={navItem.label}>
-						<Box
-							as='span'
-							p={2}
-							fontSize={'1rem'}
-							fontWeight={400}
-							color='gray.800'
-							_hover={{
-								textDecoration: 'none',
-								color: 'pink.800',
-							}}>
-							{navItem.label}
-						</Box>
+						<Box {...navItemLabelStyleProps}>{navItem.label}</Box>
 					</Link>
 				),
 			)}
@@ -146,13 +118,7 @@ const MobileNav = () => {
 const MobileNavItem = ({ label, href }: NavItem) => {
 	return (
 		<Stack spacing={4}>
-			<Flex
-				py={2}
-				justify={'space-between'}
-				align={'center'}
-				_hover={{
-					textDecoration: 'none',
-				}}>
+			<Flex {...mobileNavItemWrapperStyleProps}>
 				<Text fontWeight={400} color='gray.800'>
 					{label}
 				</Text>
