@@ -1,11 +1,11 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
-import { Box, Image, Heading, Button } from '@chakra-ui/react';
+import { Box, Image, Heading, SimpleGrid, Button } from '@chakra-ui/react';
 import { OptionContainer } from './OptionContainer';
 
 import { btnStyleProps, nextButtonStyleProps } from '../utils';
 import { useStateContext } from '../../Context';
 import { QuestionContainerProps } from './QuestionContainerProps.type';
-import { imageStyleProps } from './utils';
+import { imageStyleProps, gridStyleProps } from './utils';
 
 export const QuestionContainer = ({
 	question,
@@ -27,26 +27,28 @@ export const QuestionContainer = ({
 
 	return (
 		<>
-			<Image src={question.image} {...imageStyleProps} />
-			<Box py='1rem'>
-				<Heading as='h4' size='sm'>
-					Question {currentQuestionNumber}
-				</Heading>
-				<Heading as='h3' size='md' mt='1rem'>
-					{question.question}
-				</Heading>
-				<OptionContainer question={question} />
+			<SimpleGrid {...gridStyleProps}>
+				<Image src={question.image} {...imageStyleProps} />
+				<Box py='1rem'>
+					<Heading as='h4' size='sm'>
+						Question {currentQuestionNumber}
+					</Heading>
+					<Heading as='h3' size='md' mt='1rem'>
+						{question.question}
+					</Heading>
+					<OptionContainer question={question} />
 
-				<Button
-					rightIcon={<ArrowForwardIcon />}
-					{...btnStyleProps}
-					{...nextButtonStyleProps}
-					onClick={updateQuestionOrSubmitQuiz}>
-					{currentQuestionNumber !== attemptedQuiz!.totalQuestions
-						? 'Next'
-						: 'submit'}
-				</Button>
-			</Box>
+					<Button
+						rightIcon={<ArrowForwardIcon />}
+						{...btnStyleProps}
+						{...nextButtonStyleProps}
+						onClick={updateQuestionOrSubmitQuiz}>
+						{currentQuestionNumber !== attemptedQuiz!.totalQuestions
+							? 'Next'
+							: 'submit'}
+					</Button>
+				</Box>
+			</SimpleGrid>
 		</>
 	);
 };

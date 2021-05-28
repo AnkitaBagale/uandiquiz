@@ -1,7 +1,7 @@
 import { Box, SimpleGrid, useRadio, useRadioGroup } from '@chakra-ui/react';
 import { useStateContext } from '../../Context';
 import { Option, Question } from '../../Context/QuizContext/Quiz.type';
-import { optionsGridStyleProps } from './utils';
+import { optionsGridStyleProps, radioCardStyleProps } from './utils';
 
 function RadioCard(props: any) {
 	const { getInputProps, getCheckboxProps } = useRadio(props.radio);
@@ -12,29 +12,7 @@ function RadioCard(props: any) {
 	return (
 		<Box as='label'>
 			<input {...input} checked={!!props.option.isSelected} />
-			<Box
-				{...checkbox}
-				boxShadow='md'
-				cursor='pointer'
-				borderWidth='1px'
-				borderRadius='md'
-				bg='gray.400'
-				color='gray.800'
-				fontWeight='bold'
-				_checked={{
-					bg: 'pink.700',
-					color: 'white',
-					borderColor: 'pink.700',
-					fontWeight: '400',
-				}}
-				_hover={{
-					bg: 'pink.700',
-					color: 'white',
-				}}
-				_focus={{
-					boxShadow: 'outline',
-				}}
-				p='1rem'>
+			<Box {...checkbox} {...radioCardStyleProps}>
 				{props.children}
 			</Box>
 		</Box>
