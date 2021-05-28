@@ -13,6 +13,7 @@ https://user-images.githubusercontent.com/69760792/119273290-ca607e80-bc27-11eb-
 - Express + MongoDB + Mongoose (https://github.com/AnkitaBagale/uandistore)
 - Local Storage
 - JEST
+- Chakra Ui
 
 ### Completed functionalities:
 
