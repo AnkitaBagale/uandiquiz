@@ -1,37 +1,23 @@
 import {
 	Box,
 	Flex,
-	Text,
 	IconButton,
-	Stack,
 	Collapse,
 	useDisclosure,
 	Avatar,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
 
-import './nav.css';
-import { NavItem } from './NavItem.type';
 import {
 	iconWrapperStyleProps,
 	navWrapperStyleProps,
 	avatarStyleProps,
-	navItemLabelStyleProps,
 	avatarWrapperStyleProps,
-	mobileNavItemWrapperStyleProps,
 } from './nav-style-props';
+import { Logo } from './Logo';
 
-const NAV_ITEMS: Array<NavItem> = [
-	{
-		label: 'Home',
-		href: '/',
-	},
-	{
-		label: 'Dashboard',
-		href: '/dashboard',
-	},
-];
+import { DesktopNav } from './DesktopNav';
+import { MobileNav } from './MobileNav';
 
 export const Nav = () => {
 	const { isOpen, onToggle } = useDisclosure();
@@ -55,19 +41,7 @@ export const Nav = () => {
 						/>
 					</Flex>
 					<Flex justify={{ base: 'center', md: 'start' }}>
-						<Link to='/' className='link-no-style'>
-							<span className='primary-text-color logo-title'>
-								U
-								<span className='tertiary-text-color logo-and-symbol-style'>
-									&
-								</span>
-								I
-							</span>
-							<span className='tertiary-text-color logo-tagline hide-in-mobile'>
-								LET'S DESIGN TOGETHER
-							</span>
-						</Link>
-
+						<Logo />
 						<Flex display={{ base: 'none', md: 'flex' }} ml={10}>
 							<DesktopNav />
 						</Flex>
@@ -84,45 +58,5 @@ export const Nav = () => {
 				<MobileNav />
 			</Collapse>
 		</Box>
-	);
-};
-
-const DesktopNav = () => {
-	return (
-		<Flex alignItems='center' spacing={4}>
-			{NAV_ITEMS.map(
-				(navItem: NavItem): JSX.Element => (
-					<Link to={navItem.href} key={navItem.label}>
-						<Box {...navItemLabelStyleProps}>{navItem.label}</Box>
-					</Link>
-				),
-			)}
-		</Flex>
-	);
-};
-
-const MobileNav = () => {
-	return (
-		<Stack bg='white' px={6} py={4} display={{ md: 'none' }} boxShadow='md'>
-			{NAV_ITEMS.map(
-				(navItem: NavItem): JSX.Element => (
-					<Link to={navItem.href} key={navItem.label}>
-						<MobileNavItem {...navItem} />
-					</Link>
-				),
-			)}
-		</Stack>
-	);
-};
-
-const MobileNavItem = ({ label, href }: NavItem) => {
-	return (
-		<Stack spacing={4}>
-			<Flex {...mobileNavItemWrapperStyleProps}>
-				<Text fontWeight={400} color='gray.800'>
-					{label}
-				</Text>
-			</Flex>
-		</Stack>
 	);
 };

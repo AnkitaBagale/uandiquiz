@@ -1,1 +1,1 @@
-export { colors, fonts } from './database';
+export { colors, fonts } from './theme-data';

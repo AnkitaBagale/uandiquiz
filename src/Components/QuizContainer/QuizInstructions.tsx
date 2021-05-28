@@ -13,13 +13,13 @@ import { QuizInstructionsProps } from './QuizInstructionsProps.type';
 import { instructionsContainerStyleProps, listStyleProps } from './utils';
 
 export const QuizInstructions = ({
-	quiz,
+	quizName,
 	setShowQuiz,
 }: QuizInstructionsProps) => {
 	return (
 		<>
 			<Container {...instructionsContainerStyleProps}>
-				<Heading mt='2rem'>{quiz.name}</Heading>
+				<Heading mt='2rem'>{quizName}</Heading>
 
 				<List {...listStyleProps}>
 					<ListItem>

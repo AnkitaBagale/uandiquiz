@@ -49,7 +49,7 @@ export const QuizContainer = () => {
 			{!showResult && quiz && (
 				<>
 					{!showQuiz ? (
-						<QuizInstructions quiz={quiz} setShowQuiz={setShowQuiz} />
+						<QuizInstructions quizName={quiz.name} setShowQuiz={setShowQuiz} />
 					) : (
 						<>
 							<Heading mt='2rem' px='1.5rem' textAlign='center'>

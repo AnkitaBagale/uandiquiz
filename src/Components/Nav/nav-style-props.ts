@@ -53,3 +53,24 @@ export const mobileNavItemWrapperStyleProps = {
 		textDecoration: 'none',
 	},
 };
+
+export const logoTitleStyleProps = {
+	fontSize: '2rem',
+	fontFamily: 'Roboto Slab',
+	fontWeight: '500',
+	color: 'pink.800',
+};
+
+export const AndSymbolStyleProps = {
+	fontSize: '1rem',
+	marginRight: '0.1875rem',
+	color: 'gray.800',
+};
+
+export const logoTaglineStyleProps = {
+	fontSize: '0.625rem',
+	fontWeight: '500',
+	letterSpacing: '1px',
+	color: 'gray.800',
+	display: { base: 'none', md: 'block', lg: 'block', xl: 'block' },
+};

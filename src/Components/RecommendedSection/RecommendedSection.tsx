@@ -24,7 +24,7 @@ export const RecommendedSection = ({ type }: { type: string }) => {
 				const url = `${APIURL}/videos/type/${type}`;
 				const {
 					data: { response },
-				} = await axios.get(url);
+				} = await axios.get<{ response: Video[] }>(url);
 
 				setVideos(response);
 			} catch (error) {

@@ -1,8 +1,7 @@
 import { Box, Image, Heading, Text } from '@chakra-ui/react';
 import { AnswerOptionsContainer } from '../AnswerOptionsContainer';
 import { AnswerContainerProps } from './AnswerContainerProps.type';
-import { textStyleProps, imageStyleProps } from './utils';
-import { getPointsForAnswer } from './utils';
+import { textStyleProps, imageStyleProps, getPointsForAnswer } from './utils';
 
 export const AnswerContainer = ({
 	question,
