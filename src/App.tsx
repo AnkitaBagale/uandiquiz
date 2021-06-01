@@ -5,6 +5,9 @@ import {
 	Footer,
 	CategoryLandingPage,
 	Dashboard,
+	SignUp,
+	Login,
+	ForgotPassword,
 } from './Components';
 import './App.css';
 import { Route, Routes } from 'react-router';
@@ -67,6 +70,9 @@ export default function App() {
 						element={<CategoryLandingPage />}
 					/>
 					<Route path='/quiz/:quizId' element={<QuizContainer />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/forgot' element={<ForgotPassword />} />
 				</Routes>
 			</div>
 			<Footer />

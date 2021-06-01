@@ -18,6 +18,7 @@ import { Logo } from './Logo';
 
 import { DesktopNav } from './DesktopNav';
 import { MobileNav } from './MobileNav';
+import { Link } from 'react-router-dom';
 
 export const Nav = () => {
 	const { isOpen, onToggle } = useDisclosure();
@@ -47,11 +48,15 @@ export const Nav = () => {
 						</Flex>
 					</Flex>
 				</Flex>
-				<>
-					<Box {...avatarWrapperStyleProps}>
-						<Avatar {...avatarStyleProps} src='https://bit.ly/broken-link' />
+				<Link to='/login'>
+					<Box as='span' {...avatarWrapperStyleProps}>
+						<Avatar
+							as='span'
+							{...avatarStyleProps}
+							src='https://bit.ly/broken-link'
+						/>
 					</Box>
-				</>
+				</Link>
 			</Flex>
 
 			<Collapse in={isOpen} animateOpacity>
