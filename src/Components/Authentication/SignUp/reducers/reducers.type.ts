@@ -6,6 +6,13 @@ export type InitialFormState = {
 	confirmPassword: string;
 	showPassword: boolean;
 	showConfirmPassword: boolean;
+	status: string;
+	firstNameError: string;
+	lastNameError: string;
+	emailError: string;
+	passwordError: string;
+	confirmPasswordError: string;
+	apiError: string;
 };
 
 export type ActionForm =
@@ -34,18 +41,11 @@ export type ActionForm =
 	  }
 	| {
 			type: 'SHOW_CONFIRM_PASSWORD';
-	  };
-
-export type InitialFormErrorsState = {
-	firstNameError: string;
-	lastNameError: string;
-	emailError: string;
-	passwordError: string;
-	confirmPasswordError: string;
-	apiError: string;
-};
-
-export type ActionErrors =
+	  }
+	| {
+			type: 'SET_STATUS';
+			payload: string;
+	  }
 	| {
 			type: 'SET_FIRST_NAME_ERROR';
 			payload: string;

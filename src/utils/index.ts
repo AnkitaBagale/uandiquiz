@@ -1,2 +1,2 @@
 export { isSelectedOptionRight } from './isSelectedOptionRight/is-selected-option-right';
-export { APIURL } from './constants';
+export { API_URL } from './constants';

@@ -17,13 +17,13 @@ export const QuizDataProvider: React.FC = ({ children }) => {
 		featuredQuizzes: [],
 		scoreBoard: scoreDataFromLocalStorage,
 	};
-	const [state, dispatch] = useReducer(quizDataReducer, initialState);
+	const [quizState, quizDispatch] = useReducer(quizDataReducer, initialState);
 
 	return (
-		<QuizDataContext.Provider value={{ state, dispatch }}>
+		<QuizDataContext.Provider value={{ quizState, quizDispatch }}>
 			{children}
 		</QuizDataContext.Provider>
 	);
 };
 
-export const useStateContext = () => useContext(QuizDataContext);
+export const useQuizData = () => useContext(QuizDataContext);

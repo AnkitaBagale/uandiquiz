@@ -1,17 +1,31 @@
-import { ActionErrors, InitialFormState } from '../reducers/reducers.type';
+import { loginUserParameters } from '../../../../Context/AuthenticationContext/AuthenticationContext.type';
+import { InitialFormState, ActionForm } from '../reducers/reducers.type';
 import { checkLoginFormValidity } from './check-login-form-validity';
 
-export const loginBtnClicked = async (
-	formState: InitialFormState,
-	errorsDispatch: React.Dispatch<ActionErrors>,
-) => {
-	console.log('entered');
-	errorsDispatch({ type: 'RESET_ERRORS' });
-	if (checkLoginFormValidity(formState, errorsDispatch)) {
-		const loginDetails = {
+export type LoginBtnClicked = {
+	formState: InitialFormState;
+	formDispatch: React.Dispatch<ActionForm>;
+	loginUser: (parameters: loginUserParameters) => Promise<string>;
+	from: string;
+};
+
+export const loginBtnClicked = async ({
+	formState,
+	formDispatch,
+	loginUser,
+	from,
+}: LoginBtnClicked) => {
+	formDispatch({ type: 'RESET_ERRORS' });
+	if (checkLoginFormValidity(formState, formDispatch)) {
+		formDispatch({ type: 'SET_STATUS', payload: 'LOADING' });
+		const message = await loginUser({
 			email: formState.email,
 			password: formState.password,
-		};
-		console.log(loginDetails);
+			from,
+		});
+
+		if (message !== 'SUCCESS') {
+			formDispatch({ type: 'SET_API_ERROR', payload: message });
+		}
 	}
 };

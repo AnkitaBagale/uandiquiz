@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/button';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { APIURL } from '../../utils';
+import { API_URL } from '../../utils';
 import { btnStyleProps, solidPrimaryButtonStyleProps } from '../utils';
 import { Video } from './Video.type';
 import { VideoCard } from './VideoCard';
@@ -21,7 +21,7 @@ export const RecommendedSection = ({ type }: { type: string }) => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const url = `${APIURL}/videos/type/${type}`;
+				const url = `${API_URL}/videos/type/${type}`;
 				const {
 					data: { response },
 				} = await axios.get<{ response: Video[] }>(url);

@@ -8,6 +8,7 @@ import App from './App';
 import { QuizDataProvider } from './Context';
 import { colors, fonts } from './database';
 import ScrollToTop from './ScrollToTop';
+import { AuthenticationProvider } from './Context/AuthenticationContext/AuthenticationProvider';
 
 const theme = extendTheme({
 	colors,
@@ -19,10 +20,12 @@ ReactDOM.render(
 	<StrictMode>
 		<ChakraProvider theme={theme}>
 			<Router>
-				<QuizDataProvider>
-					<ScrollToTop />
-					<App />
-				</QuizDataProvider>
+				<AuthenticationProvider>
+					<QuizDataProvider>
+						<ScrollToTop />
+						<App />
+					</QuizDataProvider>
+				</AuthenticationProvider>
 			</Router>
 		</ChakraProvider>
 	</StrictMode>,

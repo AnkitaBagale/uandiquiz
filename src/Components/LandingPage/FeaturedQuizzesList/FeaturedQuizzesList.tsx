@@ -1,7 +1,7 @@
 import { Heading, SimpleGrid } from '@chakra-ui/layout';
 import { QuizCard } from '../QuizCard';
 import { QuizCardFromDb } from '../../../Context/QuizContext/Quiz.type';
-import { useStateContext } from '../../../Context';
+import { useQuizData } from '../../../Context';
 import {
 	gridProps,
 	headingStyleProps,
@@ -9,8 +9,8 @@ import {
 
 export const FeaturedQuizzesList = () => {
 	const {
-		state: { featuredQuizzes },
-	} = useStateContext();
+		quizState: { featuredQuizzes },
+	} = useQuizData();
 
 	return (
 		<>

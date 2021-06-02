@@ -24,7 +24,7 @@ export const Nav = () => {
 	const { isOpen, onToggle } = useDisclosure();
 
 	return (
-		<Box position='sticky' top='0' zIndex={1}>
+		<Box position='sticky' top='0' zIndex={3}>
 			<Flex {...navWrapperStyleProps}>
 				<Flex alignItems='center'>
 					<Flex {...iconWrapperStyleProps}>

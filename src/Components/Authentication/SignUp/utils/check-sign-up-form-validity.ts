@@ -1,16 +1,16 @@
-import { ActionErrors, InitialFormState } from '../reducers/reducers.type';
+import { ActionForm, InitialFormState } from '../reducers/reducers.type';
 
 export const checkSignUpFormValidity = (
 	formState: InitialFormState,
-	errorsDispatch: React.Dispatch<ActionErrors>,
+	formDispatch: React.Dispatch<ActionForm>,
 ) => {
 	let errorFlag = true;
-	console.log('entered in validation');
+
 	if (
 		formState.firstName === '' ||
 		!/^[a-zA-Z]+(\s*\w*)*$/.test(formState.firstName)
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_FIRST_NAME_ERROR',
 			payload: 'Please enter valid first name',
 		});
@@ -20,14 +20,14 @@ export const checkSignUpFormValidity = (
 		formState.lastName === '' ||
 		!/^[a-zA-Z]+(\s*\w*)*$/.test(formState.lastName)
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_LAST_NAME_ERROR',
 			payload: 'Please enter valid last name',
 		});
 		errorFlag = false;
 	}
 	if (formState.email === '' || !/^.+@.+\.com$/.test(formState.email)) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_EMAIL_ERROR',
 			payload: 'Please enter valid email id',
 		});
@@ -39,7 +39,7 @@ export const checkSignUpFormValidity = (
 			formState.password,
 		)
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_PASSWORD_ERROR',
 			payload:
 				'Password length should contain minimum 8 characters (at least one capital, small letter and number)',
@@ -50,7 +50,7 @@ export const checkSignUpFormValidity = (
 		formState.confirmPassword === '' ||
 		formState.password !== formState.confirmPassword
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_CONFIRM_PASSWORD_ERROR',
 			payload: 'Password does not match',
 		});

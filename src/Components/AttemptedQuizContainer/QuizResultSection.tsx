@@ -6,13 +6,13 @@ import {
 	getColorOfScore,
 } from './utils';
 import { Box, Heading, Text } from '@chakra-ui/layout';
-import { useStateContext } from '../../Context';
+import { useQuizData } from '../../Context';
 import { Quiz } from '../../Context/QuizContext/Quiz.type';
 
 export const QuizResultSection = () => {
 	const {
-		state: { attemptedQuiz },
-	} = useStateContext();
+		quizState: { attemptedQuiz },
+	} = useQuizData();
 	return (
 		<>
 			<Heading as='h1' textAlign='center' {...textSizeMdStyleProps}>

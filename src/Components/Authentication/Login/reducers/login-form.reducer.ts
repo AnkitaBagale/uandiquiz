@@ -4,21 +4,40 @@ export const initialFormState: InitialFormState = {
 	email: '',
 	password: '',
 	showPassword: false,
+	status: '',
+	emailError: '',
+	passwordError: '',
+	apiError: '',
 };
 
-export const signUpFormReducer = (
-	state: InitialFormState,
+export const loginFormReducer = (
+	formState: InitialFormState,
 	action: ActionForm,
 ) => {
 	switch (action.type) {
 		case 'SET_EMAIL': {
-			return { ...state, email: action.payload };
+			return { ...formState, email: action.payload };
 		}
 		case 'SET_PASSWORD': {
-			return { ...state, password: action.payload };
+			return { ...formState, password: action.payload };
 		}
 		case 'SHOW_PASSWORD': {
-			return { ...state, showPassword: !state.showPassword };
+			return { ...formState, showPassword: !formState.showPassword };
+		}
+		case 'SET_STATUS': {
+			return { ...formState, status: action.payload };
+		}
+		case 'SET_EMAIL_ERROR': {
+			return { ...formState, emailError: action.payload };
+		}
+		case 'SET_PASSWORD_ERROR': {
+			return { ...formState, passwordError: action.payload };
+		}
+		case 'RESET_ERRORS': {
+			return { ...formState, emailError: '', passwordError: '', apiError: '' };
+		}
+		case 'SET_API_ERROR': {
+			return { ...formState, apiError: action.payload, status: 'FAILURE' };
 		}
 		default:
 			throw Error('Invalid Action');

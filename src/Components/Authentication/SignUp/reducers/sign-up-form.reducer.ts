@@ -8,33 +8,75 @@ export const initialFormState: InitialFormState = {
 	confirmPassword: '',
 	showPassword: false,
 	showConfirmPassword: false,
+	status: '',
+	emailError: '',
+	firstNameError: '',
+	lastNameError: '',
+	passwordError: '',
+	confirmPasswordError: '',
+	apiError: '',
 };
 
 export const signUpFormReducer = (
-	state: InitialFormState,
+	formState: InitialFormState,
 	action: ActionForm,
 ) => {
 	switch (action.type) {
 		case 'SET_EMAIL': {
-			return { ...state, email: action.payload };
+			return { ...formState, email: action.payload };
 		}
 		case 'SET_FIRST_NAME': {
-			return { ...state, firstName: action.payload };
+			return { ...formState, firstName: action.payload };
 		}
 		case 'SET_LAST_NAME': {
-			return { ...state, lastName: action.payload };
+			return { ...formState, lastName: action.payload };
 		}
 		case 'SET_PASSWORD': {
-			return { ...state, password: action.payload };
+			return { ...formState, password: action.payload };
 		}
 		case 'SET_CONFIRM_PASSWORD': {
-			return { ...state, confirmPassword: action.payload };
+			return { ...formState, confirmPassword: action.payload };
 		}
 		case 'SHOW_PASSWORD': {
-			return { ...state, showPassword: !state.showPassword };
+			return { ...formState, showPassword: !formState.showPassword };
 		}
 		case 'SHOW_CONFIRM_PASSWORD': {
-			return { ...state, showConfirmPassword: !state.showConfirmPassword };
+			return {
+				...formState,
+				showConfirmPassword: !formState.showConfirmPassword,
+			};
+		}
+		case 'SET_EMAIL_ERROR': {
+			return { ...formState, emailError: action.payload };
+		}
+		case 'SET_FIRST_NAME_ERROR': {
+			return { ...formState, firstNameError: action.payload };
+		}
+		case 'SET_LAST_NAME_ERROR': {
+			return { ...formState, lastNameError: action.payload };
+		}
+		case 'SET_PASSWORD_ERROR': {
+			return { ...formState, passwordError: action.payload };
+		}
+		case 'SET_CONFIRM_PASSWORD_ERROR': {
+			return { ...formState, confirmPasswordError: action.payload };
+		}
+		case 'RESET_ERRORS': {
+			return {
+				...formState,
+				emailError: '',
+				firstNameError: '',
+				lastNameError: '',
+				passwordError: '',
+				confirmPasswordError: '',
+				apiError: '',
+			};
+		}
+		case 'SET_API_ERROR': {
+			return { ...formState, apiError: action.payload, status: 'FAILURE' };
+		}
+		case 'SET_STATUS': {
+			return { ...formState, status: action.payload };
 		}
 		default:
 			throw Error('Invalid Action');

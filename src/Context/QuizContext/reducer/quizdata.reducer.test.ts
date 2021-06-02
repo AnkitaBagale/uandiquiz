@@ -1,4 +1,4 @@
-import { ActionType, InitialStateType, ScoreData } from '../QuizContext.type';
+import { QuizAction, InitialStateType, ScoreData } from '../QuizContext.type';
 import { quizDataReducer } from './quizdata.reducer';
 
 describe('testing quiz dispatch', () => {
@@ -9,7 +9,7 @@ describe('testing quiz dispatch', () => {
 			currentQuestionNumber: 1,
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'SET_ATTEMPT',
 			payload: {
 				quiz: {
@@ -106,7 +106,7 @@ describe('testing quiz dispatch', () => {
 			currentQuestionNumber: 1,
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'INCREMENT_QUESTION_NUMBER',
 		};
 
@@ -164,7 +164,7 @@ describe('testing quiz dispatch', () => {
 			currentQuestionNumber: 2,
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'RESET',
 		};
 
@@ -226,7 +226,7 @@ describe('testing quiz dispatch', () => {
 			scoreBoard: [] as ScoreData[],
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'CALCULATE_SCORE',
 		};
 
@@ -331,7 +331,7 @@ describe('testing quiz dispatch', () => {
 			scoreBoard: [] as ScoreData[],
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'CALCULATE_SCORE',
 		};
 
@@ -399,7 +399,7 @@ describe('testing quiz dispatch', () => {
 			scoreBoard: [] as ScoreData[],
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'CALCULATE_SCORE',
 		};
 
@@ -454,7 +454,7 @@ describe('testing quiz dispatch', () => {
 			currentQuestionNumber: 2,
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'SELECT_OPTION',
 			payload: {
 				questionId: '1',
@@ -519,7 +519,7 @@ describe('testing quiz dispatch', () => {
 			currentQuestionNumber: 1,
 		} as InitialStateType;
 
-		const action: ActionType = {
+		const action: QuizAction = {
 			type: 'SELECT_OPTION',
 			payload: {
 				questionId: '1',
@@ -550,7 +550,7 @@ describe('testing quiz dispatch', () => {
 
 		//Act
 		const testCallback = () => {
-			quizDataReducer(initialState, action as ActionType);
+			quizDataReducer(initialState, action as QuizAction);
 		};
 
 		//Assert

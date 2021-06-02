@@ -2,8 +2,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { useStateContext } from '../../Context';
-import { APIURL } from '../../utils';
+import { useQuizData } from '../../Context';
+import { API_URL } from '../../utils';
 import { Quiz } from '../../Context/QuizContext/Quiz.type';
 import { AttemptedQuizContainer } from '../AttemptedQuizContainer';
 import { Heading } from '@chakra-ui/react';
@@ -13,9 +13,9 @@ import { QuizInstructions } from './QuizInstructions';
 
 export const QuizContainer = () => {
 	const {
-		state: { currentQuestionNumber },
-		dispatch,
-	} = useStateContext();
+		quizState: { currentQuestionNumber },
+		quizDispatch,
+	} = useQuizData();
 
 	const [quiz, setQuiz] = useState<Quiz | null>(null);
 
@@ -28,8 +28,8 @@ export const QuizContainer = () => {
 			try {
 				const {
 					data: { response },
-				} = await axios.get<{ response: Quiz }>(`${APIURL}/quizzes/${quizId}`);
-				dispatch({ type: 'SET_ATTEMPT', payload: { quiz: response } });
+				} = await axios.get<{ response: Quiz }>(`${API_URL}/quizzes/${quizId}`);
+				quizDispatch({ type: 'SET_ATTEMPT', payload: { quiz: response } });
 				setQuiz(response);
 			} catch (error) {
 				console.log(error);
@@ -37,9 +37,9 @@ export const QuizContainer = () => {
 		})();
 
 		return () => {
-			dispatch({ type: 'RESET' });
+			quizDispatch({ type: 'RESET' });
 		};
-	}, [dispatch, quizId]);
+	}, [quizDispatch, quizId]);
 
 	return (
 		<>

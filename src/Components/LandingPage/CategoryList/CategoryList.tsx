@@ -1,12 +1,12 @@
 import { Heading, SimpleGrid } from '@chakra-ui/layout';
-import { useStateContext } from '../../../Context';
+import { useQuizData } from '../../../Context';
 import { CategoryCard } from '../CategoryCard';
 import { gridStyleProps, headingStyleProps } from './category-list-style-props';
 
 export const CategoryList = () => {
 	const {
-		state: { categories },
-	} = useStateContext();
+		quizState: { categories },
+	} = useQuizData();
 
 	return (
 		<>

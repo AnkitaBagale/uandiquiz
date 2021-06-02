@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from '@chakra-ui/layout';
-import { useStateContext } from '../../Context';
+import { useQuizData } from '../../Context';
 import { Question } from '../../Context/QuizContext/Quiz.type';
 import { RecommendedSection } from '../RecommendedSection';
 import { AnswerContainer } from './AnswerContainer';
@@ -8,8 +8,8 @@ import { gridStyleProps } from './utils';
 
 export const AttemptedQuizContainer = () => {
 	const {
-		state: { attemptedQuiz },
-	} = useStateContext();
+		quizState: { attemptedQuiz },
+	} = useQuizData();
 
 	return (
 		<>

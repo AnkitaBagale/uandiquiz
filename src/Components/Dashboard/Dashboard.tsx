@@ -1,11 +1,11 @@
 import { Box, Heading } from '@chakra-ui/layout';
-import { useStateContext } from '../../Context';
+import { useQuizData } from '../../Context';
 import { ScoreCard } from './ScoreCard';
 
 export const Dashboard = () => {
 	const {
-		state: { scoreBoard },
-	} = useStateContext();
+		quizState: { scoreBoard },
+	} = useQuizData();
 
 	return (
 		<Box padding='1rem' maxW='56rem' margin='auto'>

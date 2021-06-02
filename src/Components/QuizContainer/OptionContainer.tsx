@@ -1,5 +1,5 @@
 import { Box, SimpleGrid, useRadio, useRadioGroup } from '@chakra-ui/react';
-import { useStateContext } from '../../Context';
+import { useQuizData } from '../../Context';
 import { Option, Question } from '../../Context/QuizContext/Quiz.type';
 import { optionsGridStyleProps, radioCardStyleProps } from './utils';
 
@@ -22,10 +22,10 @@ function RadioCard(props: any) {
 export const OptionContainer = ({ question }: { question: Question }) => {
 	const options = question.options;
 
-	const { dispatch } = useStateContext();
+	const { quizDispatch } = useQuizData();
 
 	const updateAnswer = (optionId: string): void => {
-		dispatch({
+		quizDispatch({
 			type: 'SELECT_OPTION',
 			payload: {
 				questionId: question._id,

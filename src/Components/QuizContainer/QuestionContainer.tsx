@@ -3,7 +3,7 @@ import { Box, Image, Heading, SimpleGrid, Button } from '@chakra-ui/react';
 import { OptionContainer } from './OptionContainer';
 
 import { btnStyleProps, nextButtonStyleProps } from '../utils';
-import { useStateContext } from '../../Context';
+import { useQuizData } from '../../Context';
 import { QuestionContainerProps } from './QuestionContainerProps.type';
 import { imageStyleProps, gridStyleProps } from './utils';
 
@@ -12,15 +12,15 @@ export const QuestionContainer = ({
 	setShowResult,
 }: QuestionContainerProps) => {
 	const {
-		state: { currentQuestionNumber, attemptedQuiz },
-		dispatch,
-	} = useStateContext();
+		quizState: { currentQuestionNumber, attemptedQuiz },
+		quizDispatch,
+	} = useQuizData();
 
 	const updateQuestionOrSubmitQuiz = () => {
 		if (currentQuestionNumber !== attemptedQuiz!.totalQuestions) {
-			dispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
+			quizDispatch({ type: 'INCREMENT_QUESTION_NUMBER' });
 		} else {
-			dispatch({ type: 'CALCULATE_SCORE' });
+			quizDispatch({ type: 'CALCULATE_SCORE' });
 			setShowResult(true);
 		}
 	};

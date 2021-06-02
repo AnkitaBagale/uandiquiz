@@ -1,4 +1,4 @@
-export const APIURL = 'https://uandistoreapi.herokuapp.com';
+export const API_URL = 'https://uandistoreapi.herokuapp.com';
 
 //dev url
-// export const APIURL = 'http://localhost:3000';
+// export const API_URL = 'http://localhost:3000';

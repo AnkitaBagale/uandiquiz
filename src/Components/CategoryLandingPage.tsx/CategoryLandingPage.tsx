@@ -2,7 +2,7 @@ import { Heading, SimpleGrid } from '@chakra-ui/layout';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { APIURL } from '../../utils';
+import { API_URL } from '../../utils';
 import {
 	CategoryFromDb,
 	QuizCardFromDb,
@@ -22,7 +22,7 @@ export const CategoryLandingPage = () => {
 				const {
 					data: { response },
 				} = await axios.get<{ response: CategoryFromDb }>(
-					`${APIURL}/categories/${categoryId}`,
+					`${API_URL}/categories/${categoryId}`,
 				);
 
 				setCategoryDetails(response);

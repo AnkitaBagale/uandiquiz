@@ -8,6 +8,12 @@ export const formWrapperStyleProps = {
 	p: '2rem 1.5rem',
 };
 
+export const headingStyleProps: any = {
+	textAlign: 'center',
+	fontWeight: '500',
+	pb: '1rem',
+	fontSize: 'xx-large',
+};
 export const InputStyleProps = {
 	fontSize: '0.9rem',
 	color: 'gray.900',
@@ -56,4 +62,30 @@ export const eyeIconButtonStyleProps = {
 export const eyeIconStyleProps = {
 	w: '1.2rem',
 	h: '1.2rem',
+};
+
+export const overlayBoxStyleProps: any = {
+	position: 'absolute',
+	zIndex: 2,
+	top: 0,
+	bottom: 0,
+	left: 0,
+	right: 0,
+	d: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+};
+
+export const apiErrorStyleProps = {
+	mt: '1rem',
+	color: 'orange.400',
+	d: 'flex',
+	alignItems: 'flex-start',
+	lineHeight: '1.2rem',
+};
+
+export const apiErrorSymbolStyleProps = {
+	pr: '0.25rem',
+	height: '1.2rem',
+	width: '1.2rem',
 };

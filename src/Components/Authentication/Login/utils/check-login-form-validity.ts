@@ -1,21 +1,20 @@
-import { ActionErrors, InitialFormState } from '../reducers/reducers.type';
+import { ActionForm, InitialFormState } from '../reducers/reducers.type';
 
 export const checkLoginFormValidity = (
 	formState: InitialFormState,
-	errorsDispatch: React.Dispatch<ActionErrors>,
+	formDispatch: React.Dispatch<ActionForm>,
 ) => {
 	let errorFlag = true;
-	console.log('entered in validation');
 
 	if (formState.email === '' || !/^.+@.+\.com$/.test(formState.email)) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_EMAIL_ERROR',
 			payload: 'Please enter valid email id',
 		});
 		errorFlag = false;
 	}
 	if (formState.password === '') {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_PASSWORD_ERROR',
 			payload: 'Please enter password',
 		});

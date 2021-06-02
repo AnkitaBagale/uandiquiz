@@ -74,3 +74,16 @@ export const ButtonSolidPrimarySizeSmall = ({
 		</>
 	);
 };
+
+export const solidSecondaryButtonStyleProps = {
+	color: 'gray.800',
+	bg: 'gray.400',
+	borderRadius: 'full',
+	_hover: { bg: 'gray.600', color: 'gray.900' },
+	_active: {
+		bg: 'gray.600',
+		transform: 'scale(0.98)',
+		borderColor: 'gray.600',
+		color: 'gray.900',
+	},
+};

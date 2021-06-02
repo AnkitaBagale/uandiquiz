@@ -1,14 +1,13 @@
-import { ActionErrors, InitialFormState } from '../reducers/reducers.type';
+import { ActionForm, InitialFormState } from '../reducers/reducers.type';
 
 export const checkForgotPasswordFormValidity = (
 	formState: InitialFormState,
-	errorsDispatch: React.Dispatch<ActionErrors>,
+	formDispatch: React.Dispatch<ActionForm>,
 ) => {
 	let errorFlag = true;
-	console.log('entered in validation');
 
 	if (formState.email === '' || !/^.+@.+\.com$/.test(formState.email)) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_EMAIL_ERROR',
 			payload: 'Please enter valid email id',
 		});
@@ -20,7 +19,7 @@ export const checkForgotPasswordFormValidity = (
 			formState.password,
 		)
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_PASSWORD_ERROR',
 			payload:
 				'Password length should contain minimum 8 characters (at least one capital, small letter and number)',
@@ -31,7 +30,7 @@ export const checkForgotPasswordFormValidity = (
 		formState.confirmPassword === '' ||
 		formState.password !== formState.confirmPassword
 	) {
-		errorsDispatch({
+		formDispatch({
 			type: 'SET_CONFIRM_PASSWORD_ERROR',
 			payload: 'Password does not match',
 		});

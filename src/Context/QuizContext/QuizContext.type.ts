@@ -16,11 +16,11 @@ export type InitialStateType = {
 };
 
 export type ContextType = {
-	state: InitialStateType;
-	dispatch: (action: ActionType) => void;
+	quizState: InitialStateType;
+	quizDispatch: (action: QuizAction) => void;
 };
 
-export type ActionType =
+export type QuizAction =
 	| {
 			type: 'SET_ATTEMPT';
 			payload: { quiz: Quiz };

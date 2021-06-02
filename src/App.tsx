@@ -8,21 +8,24 @@ import {
 	SignUp,
 	Login,
 	ForgotPassword,
+	UserRoute,
+	PrivateRoute,
+	Profile,
 } from './Components';
 import './App.css';
 import { Route, Routes } from 'react-router';
 import { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { useStateContext } from './Context';
+import { useQuizData } from './Context';
 import axios from 'axios';
-import { APIURL } from './utils';
+import { API_URL } from './utils';
 import {
 	CategoryOfQuiz,
 	QuizCardFromDb,
 } from './Context/QuizContext/Quiz.type';
 
 export default function App() {
-	const { dispatch } = useStateContext();
+	const { quizDispatch } = useQuizData();
 
 	useEffect(() => {
 		(async () => {
@@ -30,9 +33,9 @@ export default function App() {
 				const {
 					data: { response },
 				} = await axios.get<{ response: QuizCardFromDb[] }>(
-					`${APIURL}/quizzes`,
+					`${API_URL}/quizzes`,
 				);
-				dispatch({
+				quizDispatch({
 					type: 'SET_FEATURED_QUIZZES',
 					payload: { featuredQuizzes: response },
 				});
@@ -46,9 +49,9 @@ export default function App() {
 				const {
 					data: { response },
 				} = await axios.get<{ response: CategoryOfQuiz[] }>(
-					`${APIURL}/categories`,
+					`${API_URL}/categories`,
 				);
-				dispatch({
+				quizDispatch({
 					type: 'SET_CATEGORIES',
 					payload: { categories: response },
 				});
@@ -56,7 +59,7 @@ export default function App() {
 				console.log(error);
 			}
 		})();
-	}, [dispatch]);
+	}, [quizDispatch]);
 	return (
 		<div>
 			<Nav />
@@ -70,9 +73,11 @@ export default function App() {
 						element={<CategoryLandingPage />}
 					/>
 					<Route path='/quiz/:quizId' element={<QuizContainer />} />
-					<Route path='/signup' element={<SignUp />} />
-					<Route path='/login' element={<Login />} />
-					<Route path='/forgot' element={<ForgotPassword />} />
+
+					<UserRoute path='/signup' element={<SignUp />} />
+					<UserRoute path='/login' element={<Login />} />
+					<UserRoute path='/forgot' element={<ForgotPassword />} />
+					<PrivateRoute path='/profile' element={<Profile />} />
 				</Routes>
 			</div>
 			<Footer />

@@ -1,14 +1,14 @@
 import { isSelectedOptionRight } from '../../../utils';
-import { InitialStateType, ActionType, ScoreData } from '../QuizContext.type';
+import { InitialStateType, QuizAction, ScoreData } from '../QuizContext.type';
 
 export const quizDataReducer = (
-	state: InitialStateType,
-	action: ActionType,
+	quizState: InitialStateType,
+	action: QuizAction,
 ): InitialStateType => {
 	switch (action.type) {
 		case 'SET_ATTEMPT': {
 			return {
-				...state,
+				...quizState,
 				attemptedQuiz: {
 					...action.payload.quiz,
 					score: 0,
@@ -17,21 +17,21 @@ export const quizDataReducer = (
 		}
 
 		case 'SET_CATEGORIES': {
-			return { ...state, categories: action.payload.categories };
+			return { ...quizState, categories: action.payload.categories };
 		}
 		case 'SET_FEATURED_QUIZZES': {
-			return { ...state, featuredQuizzes: action.payload.featuredQuizzes };
+			return { ...quizState, featuredQuizzes: action.payload.featuredQuizzes };
 		}
 		case 'INCREMENT_QUESTION_NUMBER': {
 			return {
-				...state,
-				currentQuestionNumber: state.currentQuestionNumber + 1,
+				...quizState,
+				currentQuestionNumber: quizState.currentQuestionNumber + 1,
 			};
 		}
 
 		case 'CALCULATE_SCORE': {
-			if (state.attemptedQuiz) {
-				const score = state.attemptedQuiz.questions.reduce(
+			if (quizState.attemptedQuiz) {
+				const score = quizState.attemptedQuiz.questions.reduce(
 					(totalScore: number, { negativePoints, points, options }): number => {
 						if (isSelectedOptionRight(options)) {
 							return totalScore + points;
@@ -43,8 +43,8 @@ export const quizDataReducer = (
 
 				const scoreData: ScoreData = {
 					score: score,
-					quizId: state.attemptedQuiz._id,
-					quizName: state.attemptedQuiz.name,
+					quizId: quizState.attemptedQuiz._id,
+					quizName: quizState.attemptedQuiz.name,
 					scoreStatus: score >= 70 ? 'PASS' : 'FAIL',
 				};
 
@@ -61,12 +61,12 @@ export const quizDataReducer = (
 				}
 
 				return {
-					...state,
+					...quizState,
 					attemptedQuiz: {
-						...state.attemptedQuiz,
+						...quizState.attemptedQuiz,
 						score,
 					},
-					scoreBoard: [...state.scoreBoard, scoreData],
+					scoreBoard: [...quizState.scoreBoard, scoreData],
 				};
 			} else {
 				throw new Error('No quiz attempted');
@@ -74,8 +74,8 @@ export const quizDataReducer = (
 		}
 
 		case 'SELECT_OPTION': {
-			if (state.attemptedQuiz) {
-				const updatedQuestions = state.attemptedQuiz.questions.map(
+			if (quizState.attemptedQuiz) {
+				const updatedQuestions = quizState.attemptedQuiz.questions.map(
 					(question) => {
 						if (question._id !== action.payload.questionId) {
 							return question;
@@ -93,9 +93,9 @@ export const quizDataReducer = (
 				);
 
 				return {
-					...state,
+					...quizState,
 					attemptedQuiz: {
-						...state.attemptedQuiz,
+						...quizState.attemptedQuiz,
 						questions: updatedQuestions,
 					},
 				};
@@ -105,7 +105,7 @@ export const quizDataReducer = (
 		}
 		case 'RESET': {
 			return {
-				...state,
+				...quizState,
 				attemptedQuiz: null,
 				currentQuestionNumber: 1,
 			};
