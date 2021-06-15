@@ -10,7 +10,8 @@ https://user-images.githubusercontent.com/69760792/119273290-ca607e80-bc27-11eb-
 ### Tech:
 
 - React + TypeScript
-- Express + MongoDB + Mongoose (https://github.com/AnkitaBagale/uandistore)
+- Express + MongoDB + Mongoose (https://github.com/AnkitaBagale/uandistore/tree/sm-development)
+- Authentication using JWT
 - Local Storage
 - JEST
 - Chakra Ui
@@ -26,6 +27,4 @@ https://user-images.githubusercontent.com/69760792/119273290-ca607e80-bc27-11eb-
 - Unit tests are added
 
 ### Upcoming features-
-
-- Authentication using JWT
 - Leaderboard
