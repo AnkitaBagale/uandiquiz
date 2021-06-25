@@ -15,7 +15,7 @@ export const VideoCard = ({ video }: { video: Video }) => {
 		<>
 			<Link
 				{...externalLinkStyleProps}
-				href={`https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/${video._id}`}>
+				href={`https://u-and-i-video-library.netlify.app/explore/${video._id}`}>
 				<Box {...cardWrapperStyleProps}>
 					<Image src={video.thumbnail} alt={video.name} {...imageStyleProps} />
 

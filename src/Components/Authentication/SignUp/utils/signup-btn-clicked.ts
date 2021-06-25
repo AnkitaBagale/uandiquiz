@@ -2,7 +2,7 @@ import { SignupUserParameters } from '../../../../Context/AuthenticationContext/
 import { ActionForm, InitialFormState } from '../reducers/reducers.type';
 import { checkSignUpFormValidity } from './check-sign-up-form-validity';
 
-export type LoginBtnClicked = {
+export type SignUpBtnClicked = {
 	formState: InitialFormState;
 	formDispatch: React.Dispatch<ActionForm>;
 	signUpNewUser: (parameters: SignupUserParameters) => Promise<string>;
@@ -12,7 +12,7 @@ export const signupBtnClicked = async ({
 	formState,
 	formDispatch,
 	signUpNewUser,
-}: LoginBtnClicked) => {
+}: SignUpBtnClicked) => {
 	formDispatch({ type: 'RESET_ERRORS' });
 	if (checkSignUpFormValidity(formState, formDispatch)) {
 		formDispatch({ type: 'SET_STATUS', payload: 'LOADING' });
