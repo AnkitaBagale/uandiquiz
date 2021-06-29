@@ -21,7 +21,6 @@ export const footerWrapperStyleProps = {
 
 export const buttonGroupStyleProps = {
 	variant: 'ghost',
-	color: 'gray.600',
 	mt: '0.5rem',
 	mb: '0.5rem',
 };
