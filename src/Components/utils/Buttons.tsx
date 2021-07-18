@@ -49,6 +49,21 @@ export const blockButtonStyleProps = {
 	},
 };
 
+export const blockOutlineButtonStyleProps = {
+	d: 'block',
+	w: '100%',
+	border: '1px solid',
+	color: 'pink.800',
+	borderColor: 'pink.700',
+	borderRadius: 'base',
+	_hover: { bg: 'pink.800', color: 'white' },
+	_active: {
+		bg: 'pink.800',
+		color: 'white',
+		transform: 'scale(0.98)',
+	},
+};
+
 export const textLinkStyleProps = {
 	ml: '0.5rem',
 	borderBottomWidth: '0.1rem',

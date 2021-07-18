@@ -7,7 +7,6 @@ import {
 	Dashboard,
 	SignUp,
 	Login,
-	ForgotPassword,
 	UserRoute,
 	PrivateRoute,
 	Profile,
@@ -76,7 +75,6 @@ export default function App() {
 
 					<UserRoute path='/signup' element={<SignUp />} />
 					<UserRoute path='/login' element={<Login />} />
-					<UserRoute path='/forgot' element={<ForgotPassword />} />
 					<PrivateRoute path='/profile' element={<Profile />} />
 				</Routes>
 			</div>

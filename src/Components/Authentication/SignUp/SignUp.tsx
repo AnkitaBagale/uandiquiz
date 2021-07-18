@@ -28,7 +28,11 @@ import {
 	initialFormState,
 	signUpFormReducer,
 } from './reducers/sign-up-form.reducer';
-import { btnStyleProps, blockButtonStyleProps } from '../../utils';
+import {
+	btnStyleProps,
+	blockButtonStyleProps,
+	textLinkStyleProps,
+} from '../../utils';
 
 import { signupBtnClicked } from './utils/signup-btn-clicked';
 
@@ -36,6 +40,7 @@ import { ThankYouScreen } from '../ThankYouScreen';
 import { ActionForm } from './reducers/reducers.type';
 import Loader from 'react-loader-spinner';
 import { useAuthentication } from '../../../Context';
+import { Link } from 'react-router-dom';
 
 export const SignUp = () => {
 	const [formState, formDispatch] = useReducer(
@@ -243,6 +248,7 @@ export const SignUp = () => {
 										</FormErrorMessage>
 									</Box>
 								</FormControl>
+
 								<Box mt='2rem'>
 									<Button
 										onClick={() => {
@@ -267,6 +273,14 @@ export const SignUp = () => {
 						)}
 					</>
 				)}
+				<Box mt='1rem' fontSize='0.9rem'>
+					Already registered ?
+					<Link to='/login'>
+						<Box as='span' {...textLinkStyleProps}>
+							Login here
+						</Box>
+					</Link>
+				</Box>
 			</Box>
 		</>
 	);

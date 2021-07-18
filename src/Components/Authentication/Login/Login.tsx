@@ -26,13 +26,14 @@ import {
 	btnStyleProps,
 	blockButtonStyleProps,
 	textLinkStyleProps,
+	blockOutlineButtonStyleProps,
 } from '../../utils';
 import { loginFormReducer, initialFormState } from './reducers';
 import { loginBtnClicked } from './utils/login-btn-clicked';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthentication } from '../../../Context';
 import { LocationState } from '../../../Context/AuthenticationContext/AuthenticationContext.type';
-import { ActionForm } from './reducers/reducers.type';
+import { ActionForm, InitialFormState } from './reducers/reducers.type';
 import Loader from 'react-loader-spinner';
 
 export const Login = () => {
@@ -119,6 +120,30 @@ export const Login = () => {
 						<Box mt='2rem'>
 							<Button
 								onClick={() => {
+									formDispatch({ type: 'SET_EMAIL', payload: 'test@test.com' });
+									formDispatch({
+										type: 'SET_PASSWORD',
+										payload: 'Test1234',
+									});
+									loginBtnClicked({
+										formState: {
+											email: 'test@test.com',
+											password: 'Test1234',
+										} as InitialFormState,
+										formDispatch,
+										loginUser,
+										from: navigateToPath,
+									});
+								}}
+								{...btnStyleProps}
+								{...blockOutlineButtonStyleProps}>
+								Login with Test Credentials
+							</Button>
+						</Box>
+
+						<Box mt='1rem'>
+							<Button
+								onClick={() => {
 									loginBtnClicked({
 										formState,
 										formDispatch,
@@ -144,16 +169,8 @@ export const Login = () => {
 						{formState.apiError}
 					</Box>
 				)}
-				<Box mt='1rem' fontSize='0.9rem'>
-					Forgot your password?
-					<Link to='/forgot'>
-						<Box as='span' {...textLinkStyleProps}>
-							Reset here
-						</Box>
-					</Link>
-				</Box>
 
-				<Box mt='0.5rem' fontSize='0.9rem'>
+				<Box mt='1rem' fontSize='0.9rem'>
 					Not a user yet?
 					<Link to='/signup'>
 						<Box as='span' {...textLinkStyleProps}>
