@@ -5,7 +5,6 @@ import {
 	AuthenticationContext,
 	AuthenticationState,
 	loginUserParameters,
-	ResetPasswordParameters,
 	SignupUserParameters,
 	UserDetails,
 } from './AuthenticationContext.type';
@@ -104,7 +103,10 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 		lastname,
 	}: SignupUserParameters) => {
 		try {
-			const { status } = await axios({
+			const {
+				status,
+				data: { firstname: username, token },
+			} = await axios({
 				method: 'POST',
 				url: `${API_URL}/users`,
 				data: {
@@ -115,31 +117,12 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 				},
 			});
 			if (status === 201) {
-				return 'SUCCESS';
-			} else {
-				throw Error('Request failed');
-			}
-		} catch (error) {
-			console.log(error);
-			return error?.response?.data?.message || 'Please try again!';
-		}
-	};
+				localStorage?.setItem('session', JSON.stringify({ username, token }));
 
-	const resetPassword = async ({
-		email,
-		password,
-	}: ResetPasswordParameters) => {
-		try {
-			const { status } = await axios({
-				method: 'POST',
-				url: `${API_URL}/users/reset-password`,
-				data: {
-					email,
-					password,
-				},
-			});
-
-			if (status === 200) {
+				authenticationDispatch({
+					type: 'LOGIN_USER',
+					payload: { username, token },
+				});
 				return 'SUCCESS';
 			} else {
 				throw Error('Request failed');
@@ -151,7 +134,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 	};
 
 	const logOutUser = () => {
-		console.log('Heyy');
 		localStorage?.removeItem('session');
 		authenticationDispatch({ type: 'LOGOUT_USER' });
 	};
@@ -166,7 +148,6 @@ export const AuthenticationProvider: React.FC = ({ children }) => {
 				loginUser,
 				logOutUser,
 				signUpNewUser,
-				resetPassword,
 				authenticationState,
 				fetchUserDetails,
 			}}>

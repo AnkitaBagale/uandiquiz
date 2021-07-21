@@ -38,16 +38,10 @@ export type SignupUserParameters = {
 	lastname: string;
 };
 
-export type ResetPasswordParameters = {
-	email: string;
-	password: string;
-};
-
 export type AuthenticationContext = {
 	loginUser: (parameters: loginUserParameters) => Promise<string>;
 	logOutUser: () => void;
 	signUpNewUser: (parameters: SignupUserParameters) => Promise<string>;
-	resetPassword: (parameters: ResetPasswordParameters) => Promise<string>;
 	authenticationState: AuthenticationState;
 	fetchUserDetails: () => Promise<string>;
 };
