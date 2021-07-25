@@ -55,7 +55,7 @@ export const RecommendedSection = ({ type }: { type: string }) => {
 						{...btnStyleProps}
 						as='a'
 						target='_blank'
-						href={`https://deploy-preview-1--u-and-i-video-library.netlify.app/explore/?type=${type}`}>
+						href={`https://u-and-i-video-library.netlify.app/explore/?type=${type}`}>
 						Show More
 					</Button>
 				</Box>
