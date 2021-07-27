@@ -1,1 +1,12 @@
-@import url('https://u-and-i.netlify.app/Components/u-and-i-v2.css');
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css';
+
+html {
+	scroll-behavior: smooth;
+}
+.App {
+	min-height: calc(100vh - 15rem);
+}
+
+.link-no-style {
+	text-decoration: none;
+}

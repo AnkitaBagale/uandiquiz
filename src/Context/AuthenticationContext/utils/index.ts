@@ -1,0 +1,1 @@
+export { setupAuthenticationErrorHandler } from './setupAthenticationErrorHandler';

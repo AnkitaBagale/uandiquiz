@@ -1,0 +1,1 @@
+export { CategoryLandingPage } from './CategoryLandingPage';

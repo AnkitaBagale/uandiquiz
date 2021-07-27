@@ -1,0 +1,1 @@
+export { FeaturedQuizzesList } from './FeaturedQuizzesList';
